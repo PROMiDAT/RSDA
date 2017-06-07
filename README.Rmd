@@ -1,0 +1,213 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE,message=FALSE,warning=FALSE}
+knitr::opts_chunk$set(
+  collapse = F,
+  comment = "",
+  fig.path = "README-",
+  warning = F,
+  message = F,
+  dpi=300,
+  dev = "png"
+)
+library(RSDA)
+```
+
+# RSDA
+
+Symbolic Data Analysis (SDA) was proposed by professor Edwin Diday in 1987, the main purpose of SDA is to substitute the set of rows (cases) in the data table for  a concept (second order statistical unit). This package implements, to the symbolic case, certain techniques of automatic classification, as well as some linear models.
+
+## Installation
+
+You can install RSDA from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("PROMiDAT/Paquete_RSDA")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+data(ex1_db2so)
+ex1_db2so
+```
+
+```{r,warning=FALSE,message=FALSE}
+result1 <- classic.to.sym(ex1_db2so, concept=c("state"),
+                    variables=c("county", "group","sex", "age","age"),
+                    variables.types=c("$S", "$M","$M","$I","$C"))
+result1
+
+result2 <- classic.to.sym(ex1_db2so, concept=c("state", "sex"),
+                    variables=c("county", "group", "age"),
+                    variables.types=c("$S", "$M", "$I"))
+result2
+
+result3 <- classic.to.sym(ex1_db2so, concept=c("state"),
+                    variables=c("age"),
+                    variables.types=c("$H"))
+result3
+```
+
+# Basic plots in RSDA
+
+```{r,fig.align='center'}
+data(oils)
+oils
+sym.scatterplot(oils[,3], oils[,4], main='Scatter Plot')
+sym.radar.plot(oils[1:2,],main = "Radar Plot")
+sym.radar.plot(oils[1:4,],main = "Radar Plot")
+h <- interval.histogram.plot(oils[,3],n.bins = 2,main = "histogram")
+h <- interval.histogram.plot(oils[,2],n.bins = 3,main = "histogram", col = "blue")
+```
+
+
+# Basic statistics in RSDA
+
+## Mean
+
+```{r}
+result1
+mean(result1[,5])
+mean(result1[,4],method = "interval")
+mean(result1[,3],method = "modal")
+```
+
+
+## Standard Deviation
+
+```{r}
+sd(result1[,5])
+sd(result1[,4],method = "interval")
+sd(result1[,3],method = "modal")
+```
+
+## Varianze
+
+```{r}
+var(result1[,5])
+var(result1[,4],method = "interval")
+var(result1[,3],method = "modal")
+```
+
+## Correlation
+
+```{r}
+cor(oils[,1],oils[,2])
+cor(oils[,2],oils[,3],method = "billard")
+cor(oils[,3],oils[,4])
+```
+
+# Principal Component Analysis for Interval Data
+
+```{r}
+oils
+```
+
+## Example 1
+```{r,fig.align='center'}
+res <- sym.interval.pca(oils,'centers')
+sym.scatterplot(res$Sym.Components[,1], res$Sym.Components[,2],
+                 labels=TRUE,col='red',main='Centers PCA Method - Oils Data')
+sym.circle.plot(res$Sym.Prin.Correlations)
+```
+
+## Example 2
+```{r,fig.align='center'}
+res <- sym.interval.pca(oils,'tops')
+sym.scatterplot(res$Sym.Components[,1],res$Sym.Components[,2],
+                labels=TRUE,col='red',main='PCA Vertex - Oil Data')
+```
+
+## Example 3
+
+```{r,fig.align='center'}
+res <- sym.interval.pca(oils,'principal.curves')
+sym.scatterplot(res$sym.prin.curve[,1],res$sym.prin.curve[,2],
+                 labels=TRUE,col='red',main='Principal Curves PCA - Oils Data')
+```
+
+## Example 4
+
+```{r,fig.align='center'}
+res <- sym.interval.pca(oils,'optimized.distance')
+sym.scatterplot(res$Sym.Components[,1] , res$Sym.Components[,2],
+labels = TRUE,col='red',main='Optimized PCA Distance - Oils Data')
+plot(res$pca.min,choix = "var")
+```
+
+## Example 5
+
+```{r,fig.align='center'}
+res <- sym.interval.pca(oils,'optimized.variance')
+sym.scatterplot(res$Sym.Components[,1] ,res$Sym.Components[,2],
+labels = TRUE,col='red',main='Optimized PCA Variance - Oils Data')
+plot(res$pca.min,choix = "var")
+```
+
+# Regression for Interval Data
+
+## Lineal Model
+
+```{r}
+data(int_prost_train)
+data(int_prost_test)
+res.cm<-sym.lm(lpsa~.,sym.data=int_prost_train,method='cm')
+pred.cm<-predictsym.lm(res.cm,int_prost_test,method='cm')
+RMSE.L(sym.var(int_prost_test,9),pred.cm$Fitted)
+RMSE.U(sym.var(int_prost_test,9),pred.cm$Fitted)
+R2.L(sym.var(int_prost_test,9),pred.cm$Fitted)
+R2.U(sym.var(int_prost_test,9),pred.cm$Fitted)
+deter.coefficient(sym.var(int_prost_test,9),pred.cm$Fitted)
+```
+
+## LASSO
+
+```{r,fig.align='center'}
+data(int_prost_train)
+data(int_prost_test)
+res.cm.lasso<-sym.glm(sym.data=int_prost_train,response=9,method='cm',
+                      alpha=1,nfolds=10,grouped=TRUE)
+pred.cm.lasso<-predictsym.glm(res.cm.lasso,response=9,int_prost_test,method='cm')
+plot(res.cm.lasso)
+plot(res.cm.lasso$glmnet.fit, "lambda", label=TRUE)
+RMSE.L(sym.var(int_prost_test,9),pred.cm.lasso)
+RMSE.U(sym.var(int_prost_test,9),pred.cm.lasso)
+R2.L(sym.var(int_prost_test,9),pred.cm.lasso)
+R2.U(sym.var(int_prost_test,9),pred.cm.lasso)
+deter.coefficient(sym.var(int_prost_test,9),pred.cm.lasso)
+```
+
+## RIDGE
+
+```{r,fig.align='center'}
+data(int_prost_train)
+data(int_prost_test)
+res.cm.ridge<-sym.glm(sym.data=int_prost_train,response=9,method='cm',
+                      alpha=0,nfolds=10,grouped=TRUE)
+pred.cm.ridge<-predictsym.glm(res.cm.ridge,response=9,int_prost_test,method='cm')
+plot(res.cm.ridge)
+plot(res.cm.ridge$glmnet.fit, "lambda", label=TRUE)
+RMSE.L(sym.var(int_prost_test,9),pred.cm.ridge)
+RMSE.U(sym.var(int_prost_test,9),pred.cm.ridge)
+R2.L(sym.var(int_prost_test,9),pred.cm.ridge)
+R2.U(sym.var(int_prost_test,9),pred.cm.ridge)
+deter.coefficient(sym.var(int_prost_test,9),pred.cm.ridge)
+```
+
+# Symbolic Correspondance Analysis
+
+```{r,fig.align='center'}
+data(ex_cfa1) 
+res <- sym.cfa(ex_cfa1)
+cfa.scatterplot(sym.var(res,1), sym.var(res,2), num.gr1=ex_cfa1$N,
+                        labels=TRUE,col='red',main='CFA')
+```
+
