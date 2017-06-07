@@ -12,7 +12,7 @@ You can install RSDA from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("PROMiDAT/Paquete_RSDA")
+devtools::install_github("PROMiDAT/RSDA")
 ```
 
 Examples
