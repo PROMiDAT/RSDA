@@ -27,12 +27,10 @@ You can install RSDA from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("PROMiDAT/Paquete_RSDA")
+devtools::install_github("PROMiDAT/RSDA")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Examples
 
 ```{r example}
 data(ex1_db2so)
