@@ -15,10 +15,8 @@ You can install RSDA from github with:
 devtools::install_github("PROMiDAT/Paquete_RSDA")
 ```
 
-Example
+Examples
 -------
-
-This is a basic example which shows you how to solve a common problem:
 
 ``` r
 data(ex1_db2so)
