@@ -68,17 +68,17 @@ sym.Interval.distance       <-function(sym.data,variable,w1,w2,gamma=0.5,method=
 #'data("table7")
 #'ex3 <- classic.to.sym(table7, concept=c("Animal"),variables=c("Height", "Weight")
 #',variables.types=c("$I", "$I"))
-#'dist.interval(ex3,c(1,2),method="Gowda.Diday",normalize=FALSE)
-#'dist.interval(ex3,c(1,2),gamma=0.5,method="Ichino",normalize=FALSE)
-#'dist.interval(ex3,c(1,2),gamma=0.5,method="Minkowski",normalize=FALSE,q=1)
-#'dist.interval(ex3,c(1,2),gamma=0.5,method="Minkowski",normalize=FALSE,q=2)
-#'dist.interval(ex3,c(1,2),gamma=0.5,method="Hausdorff",normalize=FALSE,
+#'dist.interval(ex3,method="Gowda.Diday",normalize=FALSE)
+#'dist.interval(ex3,gamma=0.5,method="Ichino",normalize=FALSE)
+#'dist.interval(ex3,gamma=0.5,method="Minkowski",normalize=FALSE,q=1)
+#'dist.interval(ex3,gamma=0.5,method="Minkowski",normalize=FALSE,q=2)
+#'dist.interval(ex3,gamma=0.5,method="Hausdorff",normalize=FALSE,
 #'SpanNormalize=FALSE,euclidea=TRUE)
-#'dist.interval(ex3,c(1,2),gamma=0.5,method="Hausdorff",normalize=FALSE,
+#'dist.interval(ex3,gamma=0.5,method="Hausdorff",normalize=FALSE,
 #'SpanNormalize=TRUE,euclidea=TRUE)
 dist.interval <-function(sym.data, gamma = 0.5, method = "Minkowski",
                          normalize =TRUE,SpanNormalize=FALSE,q=1,euclidea=TRUE,pond=rep(1,length(variables))){
-  variables <- 1:(sym.data$N)
+  variables <- (1:(sym.data$M))
   if (sum(pond)!=length(variables) & sum(pond)>1) {pond=rep(1/length(variables),length(variables))}
 
   for (med in 1:length(method)) {

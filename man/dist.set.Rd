@@ -4,13 +4,11 @@
 \alias{dist.set}
 \title{Distance for Symbolic Set Variables.}
 \usage{
-dist.set(sym.data, variables, gamma = 0.5, method = "Minkowski",
-  normalize = TRUE, q = 1, pond = rep(1, length(variables)))
+dist.set(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE,
+  q = 1, pond = rep(1, length(variables)))
 }
 \arguments{
 \item{sym.data}{A symbolic object}
-
-\item{variables}{Numeric vector with the number of the variables to use.}
 
 \item{gamma}{gamma value for the methods ichino and minkowski.}
 
@@ -21,6 +19,8 @@ dist.set(sym.data, variables, gamma = 0.5, method = "Minkowski",
 \item{q}{q value for the Minkowski method.}
 
 \item{pond}{A numeric vector}
+
+\item{variables}{Numeric vector with the number of the variables to use.}
 }
 \value{
 An object of class "dist"
