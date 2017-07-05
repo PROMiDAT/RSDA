@@ -12,7 +12,8 @@ knitr::opts_chunk$set(
   warning = F,
   message = F,
   dpi=300,
-  dev = "png"
+  dev = "png",
+  cache = F
 )
 library(RSDA)
 ```
@@ -50,8 +51,13 @@ result2
 
 result3 <- classic.to.sym(ex1_db2so, concept=c("state"),
                     variables=c("age"),
-                    variables.types=c("$H"))
+                    variables.types=c("$H5"))
 result3
+
+result4 <- classic.to.sym(ex1_db2so, concept=c("state"),
+                    variables=c("age"),
+                    variables.types=c("$H8"))
+result4
 ```
 
 # Basic plots in RSDA

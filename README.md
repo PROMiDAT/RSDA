@@ -76,8 +76,21 @@ result2
 ``` r
 result3 <- classic.to.sym(ex1_db2so, concept=c("state"),
                     variables=c("age"),
-                    variables.types=c("$H"))
+                    variables.types=c("$H5"))
 result3
+```
+
+    # A Symbolic Data Table :  3  x  1 
+                                                               age
+    California [2,4):0% [4,6):38% [6,8):25% [8,10):12% [10,12]:25%
+    Florida      [2,4):17% [4,6):83% [6,8):0% [8,10):0% [10,12]:0%
+    Texas       [2,4):20% [4,6):60% [6,8):0% [8,10):20% [10,12]:0%
+
+``` r
+result4 <- classic.to.sym(ex1_db2so, concept=c("state"),
+                    variables=c("age"),
+                    variables.types=c("$H8"))
+result4
 ```
 
     # A Symbolic Data Table :  3  x  1 
@@ -393,31 +406,31 @@ plot(res.cm.lasso$glmnet.fit, "lambda", label=TRUE)
 RMSE.L(sym.var(int_prost_test,9),pred.cm.lasso)
 ```
 
-    [1] 0.7014621
+    [1] 0.711936
 
 ``` r
 RMSE.U(sym.var(int_prost_test,9),pred.cm.lasso)
 ```
 
-    [1] 0.6982014
+    [1] 0.7084501
 
 ``` r
 R2.L(sym.var(int_prost_test,9),pred.cm.lasso)
 ```
 
-    [1] 0.531049
+    [1] 0.5162145
 
 ``` r
 R2.U(sym.var(int_prost_test,9),pred.cm.lasso)
 ```
 
-    [1] 0.5348845
+    [1] 0.5203659
 
 ``` r
 deter.coefficient(sym.var(int_prost_test,9),pred.cm.lasso)
 ```
 
-    [1] 0.4896842
+    [1] 0.4965905
 
 RIDGE
 -----
@@ -443,31 +456,31 @@ plot(res.cm.ridge$glmnet.fit, "lambda", label=TRUE)
 RMSE.L(sym.var(int_prost_test,9),pred.cm.ridge)
 ```
 
-    [1] 0.7026753
+    [1] 0.7010619
 
 ``` r
 RMSE.U(sym.var(int_prost_test,9),pred.cm.ridge)
 ```
 
-    [1] 0.6995902
+    [1] 0.6980688
 
 ``` r
 R2.L(sym.var(int_prost_test,9),pred.cm.ridge)
 ```
 
-    [1] 0.5299082
+    [1] 0.5323882
 
 ``` r
 R2.U(sym.var(int_prost_test,9),pred.cm.ridge)
 ```
 
-    [1] 0.5335084
+    [1] 0.5358668
 
 ``` r
 deter.coefficient(sym.var(int_prost_test,9),pred.cm.ridge)
 ```
 
-    [1] 0.4794502
+    [1] 0.4761883
 
 Symbolic Correspondance Analysis
 ================================
