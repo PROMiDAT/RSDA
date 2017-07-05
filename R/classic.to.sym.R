@@ -54,8 +54,9 @@ classic.to.sym <- function(dataTable, concept, variables, variables.types) {
 
     meta.data <- list()
     for (i in 1:length(variables)) {
-
-        switch(variables.types[[i]], `$C` = {
+        n <- as.numeric(stringr::str_extract(variables.types[[i]], "[[:digit:]]"))
+        variables.types[[i]] <- stringr::str_replace(variables.types[[i]],"[[:digit:]]","")
+        switch(variables.types[[i]] , `$C` = {
             meta.data[[i]] <- process.continuum.variable(variables[[i]],
                 conceptColumns)
         }, `$I` = {
@@ -63,7 +64,7 @@ classic.to.sym <- function(dataTable, concept, variables, variables.types) {
                 conceptColumns)
         }, `$H` = {
             meta.data[[i]] <- process.histogram.variable(variables[[i]],
-                concept, dataTable)  #se agrega el parametro dataTable
+                concept, dataTable, n)
         }, `$M` = {
             meta.data[[i]] <- process.modal.variable(variables[[i]],
                 concept, sym.obj.names)
