@@ -16,7 +16,7 @@ devtools::install_github("PROMiDAT/RSDA")
 ```
 
 Examples
--------
+--------
 
 ``` r
 data(ex1_db2so)
@@ -109,31 +109,31 @@ oils
 sym.scatterplot(oils[,3], oils[,4], main='Scatter Plot')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891603-d8f777d4-4b72-11e7-8688-6e4c5f052d07.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 ``` r
 sym.radar.plot(oils[1:2,],main = "Radar Plot")
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891784-71f17656-4b73-11e7-9d6d-eeb2de79a2df.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-3-2.png" style="display: block; margin: auto;" />
 
 ``` r
 sym.radar.plot(oils[1:4,],main = "Radar Plot")
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891806-887d0016-4b73-11e7-8bd9-05645addbde0.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-3-3.png" style="display: block; margin: auto;" />
 
 ``` r
 h <- interval.histogram.plot(oils[,3],n.bins = 2,main = "histogram")
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891835-989d1f6c-4b73-11e7-8f95-656e33672f28.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-3-4.png" style="display: block; margin: auto;" />
 
 ``` r
 h <- interval.histogram.plot(oils[,2],n.bins = 3,main = "histogram", col = "blue")
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891844-aa34475a-4b73-11e7-8fd1-1f23df5f2f31.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-3-5.png" style="display: block; margin: auto;" />
 
 Basic statistics in RSDA
 ========================
@@ -194,7 +194,7 @@ sd(result1[,3],method = "modal")
              F          M 
     0.06614378 0.06614378 
 
-Variance
+Varianze
 --------
 
 ``` r
@@ -265,13 +265,13 @@ sym.scatterplot(res$Sym.Components[,1], res$Sym.Components[,2],
                  labels=TRUE,col='red',main='Centers PCA Method - Oils Data')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891866-c1cc16b8-4b73-11e7-9347-6832a2c9c78d.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 ``` r
 sym.circle.plot(res$Sym.Prin.Correlations)
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891896-d5a5648c-4b73-11e7-83f9-f9d6cf77ffaa.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-9-2.png" style="display: block; margin: auto;" />
 
 Example 2
 ---------
@@ -282,7 +282,7 @@ sym.scatterplot(res$Sym.Components[,1],res$Sym.Components[,2],
                 labels=TRUE,col='red',main='PCA Vertex - Oil Data')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891915-e5af0220-4b73-11e7-8375-1bc8d2948885.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 Example 3
 ---------
@@ -293,7 +293,7 @@ sym.scatterplot(res$sym.prin.curve[,1],res$sym.prin.curve[,2],
                  labels=TRUE,col='red',main='Principal Curves PCA - Oils Data')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891930-f2d12776-4b73-11e7-93a9-4397f312a177.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 Example 4
 ---------
@@ -304,13 +304,13 @@ sym.scatterplot(res$Sym.Components[,1] , res$Sym.Components[,2],
 labels = TRUE,col='red',main='Optimized PCA Distance - Oils Data')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891952-03819e16-4b74-11e7-986c-10e37d94795e.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 ``` r
 plot(res$pca.min,choix = "var")
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26891988-1c31a884-4b74-11e7-9bab-0648a4ae6a4c.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-12-2.png" style="display: block; margin: auto;" />
 
 Example 5
 ---------
@@ -321,13 +321,13 @@ sym.scatterplot(res$Sym.Components[,1] ,res$Sym.Components[,2],
 labels = TRUE,col='red',main='Optimized PCA Variance - Oils Data')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892009-2de7d62a-4b74-11e7-91cc-44415d9f4c23.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 ``` r
 plot(res$pca.min,choix = "var")
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892028-3c34cce2-4b74-11e7-837a-f2b6a1c5161c.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-13-2.png" style="display: block; margin: auto;" />
 
 Regression for Interval Data
 ============================
@@ -381,13 +381,13 @@ pred.cm.lasso<-predictsym.glm(res.cm.lasso,response=9,int_prost_test,method='cm'
 plot(res.cm.lasso)
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892110-76012902-4b74-11e7-9ba6-fff4b5e3564f.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 ``` r
 plot(res.cm.lasso$glmnet.fit, "lambda", label=TRUE)
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892134-8cbafe98-4b74-11e7-8688-0136c7baac66.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-15-2.png" style="display: block; margin: auto;" />
 
 ``` r
 RMSE.L(sym.var(int_prost_test,9),pred.cm.lasso)
@@ -431,13 +431,13 @@ pred.cm.ridge<-predictsym.glm(res.cm.ridge,response=9,int_prost_test,method='cm'
 plot(res.cm.ridge)
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892154-9e451752-4b74-11e7-82c2-57ad37412020.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 ``` r
 plot(res.cm.ridge$glmnet.fit, "lambda", label=TRUE)
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892175-adaa70f2-4b74-11e7-9e46-8b20048a233e.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-16-2.png" style="display: block; margin: auto;" />
 
 ``` r
 RMSE.L(sym.var(int_prost_test,9),pred.cm.ridge)
@@ -479,4 +479,4 @@ cfa.scatterplot(sym.var(res,1), sym.var(res,2), num.gr1=ex_cfa1$N,
                         labels=TRUE,col='red',main='CFA')
 ```
 
-<img src="https://user-images.githubusercontent.com/17366889/26892226-d09ee0b6-4b74-11e7-88c2-8f9e6c5a9d92.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
