@@ -46,8 +46,9 @@ sym.Multieval.distance       <-function(sym.data,variable,w1,w2,gamma=0.5,method
 #' @return An object of class "dist"
 #' @export
 
-dist.set <- function(sym.data,variables,gamma=0.5,method="Minkowski",
+dist.set <- function(sym.data,gamma=0.5,method="Minkowski",
                      normalize=TRUE,q=1,pond=rep(1,length(variables))){
+  variables <- 1:(sym.data$N)
   if (sum(pond)!=length(variables) & sum(pond)>1) {pond=rep(1/length(variables),length(variables))}
   for (med in 1:length(method)) {
     if (method[med]=="Gowda.Diday" | method[med]=="Ichino" | method[med]=="Minkowski") {

@@ -76,9 +76,9 @@ sym.Interval.distance       <-function(sym.data,variable,w1,w2,gamma=0.5,method=
 #'SpanNormalize=FALSE,euclidea=TRUE)
 #'dist.interval(ex3,c(1,2),gamma=0.5,method="Hausdorff",normalize=FALSE,
 #'SpanNormalize=TRUE,euclidea=TRUE)
-dist.interval <-function(sym.data,variables,gamma=0.5,method="Minkowski",
-                         normalize=TRUE,SpanNormalize=FALSE,q=1,euclidea=TRUE,pond=rep(1,length(variables))){
-
+dist.interval <-function(sym.data, gamma = 0.5, method = "Minkowski",
+                         normalize =TRUE,SpanNormalize=FALSE,q=1,euclidea=TRUE,pond=rep(1,length(variables))){
+  variables <- 1:(sym.data$N)
   if (sum(pond)!=length(variables) & sum(pond)>1) {pond=rep(1/length(variables),length(variables))}
 
   for (med in 1:length(method)) {
