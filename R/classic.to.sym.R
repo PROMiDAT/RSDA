@@ -181,6 +181,21 @@ print.sym.data.table <- function(x, ...) {
     print(format_sym_vars(x), ...)
 }
 
+#' Pander method for symbolic data table
+#'
+#' Prints a symbolic data table in Pandoc's markdown
+#' @param x a symbolic data table
+#' @param caption caption (string) to be shown under the table
+#' @param ... optional parameters passed to raw pandoc.table function
+#' @export
+pander.sym.data.table <- function(x, caption = attr(x,"caption"), ...){
+  if(is.null(caption)){
+    caption <- paste0("A Symbolic Data Table : ", nrow(x$meta), " x ", length(x$sym.var.starts),"\n")
+  }
+  pander::pander(format_sym_vars(x), caption, ...)
+}
+
+
 
 #' format.sym.vars
 #' @keywords internal
