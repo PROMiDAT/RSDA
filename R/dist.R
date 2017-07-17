@@ -30,9 +30,9 @@ dist.default <- function(x, method = "euclidean", diag = FALSE, upper = FALSE, p
 dist.sym.data.table <- function(x,q = 2, ...) {
    if(length(unique(x$sym.var.types))){
      if(x$sym.var.types[1] == "%I"){
-       return(dist.interval(x))
+       return(sym.dist.interval(x))
      }else if(x$sym.var.types[1] == "%S"){
-       return(dist.set(x))
+       return(sym.dist.set(x))
      }
    }
 

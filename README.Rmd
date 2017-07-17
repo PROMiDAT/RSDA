@@ -109,6 +109,12 @@ cor(oils[,2],oils[,3],method = "billard")
 cor(oils[,3],oils[,4])
 ```
 
+# Distance
+
+```{r}
+dist(result2)
+```
+
 # Principal Component Analysis for Interval Data
 
 ```{r}

@@ -1,6 +1,6 @@
 #' Compute the distance between two rows
 #' @keywords internal
-sym.Multieval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, method = "Minkowski", 
+sym.Multieval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, method = "Minkowski",
     normalize = TRUE) {
     if (method == "Gowda.Diday" | method == "Ichino" | method == "Minkowski") {
         result <- sym.data
@@ -16,11 +16,11 @@ sym.Multieval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, meth
                 D2 <- (sum(var[w1, ]) + sum(var[w2, ]) - 2 * Intersect)/Union
                 Distance <- D1 + D2
             } else {
-                if (gamma > 0.5) 
+                if (gamma > 0.5)
                   gamma <- 0.5
-                if (gamma < 0) 
+                if (gamma < 0)
                   gamma <- 0
-                Distance <- Union - Intersect + gamma * (2 * Intersect - sum(var[w1, 
+                Distance <- Union - Intersect + gamma * (2 * Intersect - sum(var[w1,
                   ]) - sum(var[w2, ]))
             }
             if (normalize == TRUE) {
@@ -34,7 +34,7 @@ sym.Multieval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, meth
     return("Invalid method")
 }
 #' Distance for Symbolic Set Variables.
-#' @name dist.set
+#' @name sym.dist.set
 #' @description This function computes and returns the distance matrix by using the specified
 #' distance measure to compute distance between symbolic interval variables.
 #'
@@ -49,14 +49,14 @@ sym.Multieval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, meth
 #' @return An object of class 'dist'
 #' @export
 
-dist.set <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE, 
+sym.dist.set <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE,
     q = 1, pond = rep(1, length(variables))) {
     variables <- (1:(sym.data$M))
     if (sum(pond) != length(variables) & sum(pond) > 1) {
         pond = rep(1/length(variables), length(variables))
     }
     for (med in 1:length(method)) {
-        if (method[med] == "Gowda.Diday" | method[med] == "Ichino" | method[med] == 
+        if (method[med] == "Gowda.Diday" | method[med] == "Ichino" | method[med] ==
             "Minkowski") {
             result <- sym.data
             h <- 1
@@ -67,7 +67,7 @@ dist.set <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize = TR
                   Matrix_pond <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   for (j in 1:nrow(result$data)) {
                     for (i in j:nrow(result$data)) {
-                      Matrix[i, j] <- sym.Multieval.distance(sym.data, var, i, j, gamma, 
+                      Matrix[i, j] <- sym.Multieval.distance(sym.data, var, i, j, gamma,
                         method[med], normalize)
                     }
                   }
@@ -86,7 +86,7 @@ dist.set <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize = TR
                   Matrix_pond <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   for (j in 1:nrow(result$data)) {
                     for (i in j:nrow(result$data)) {
-                      Matrix[i, j] <- sym.Multieval.distance(sym.data, var, i, j, gamma, 
+                      Matrix[i, j] <- sym.Multieval.distance(sym.data, var, i, j, gamma,
                         method[med], normalize)
                     }
                   }

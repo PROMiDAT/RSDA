@@ -1,46 +1,46 @@
 #' Compute the distance between two rows
 #' @keywords internal
-sym.Interval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, method = "Minkowski", 
+sym.Interval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, method = "Minkowski",
     normalize = TRUE) {
-    if (method == "Gowda.Diday" | method == "Ichino" | method == "Minkowski" | method == 
+    if (method == "Gowda.Diday" | method == "Ichino" | method == "Minkowski" | method ==
         "Hausdorff") {
         result <- sym.data
         if (result$sym.var.types[variable] == "$I") {
             lenght <- result$sym.var.length[variable]
             ini <- result$sym.var.starts[variable]
             var <- result$meta[, ini:(ini + lenght - 1)]
-            Intersect <- abs(max(var[w1, 1], var[w2, 1]) - min(var[w1, 2], var[w2, 
+            Intersect <- abs(max(var[w1, 1], var[w2, 1]) - min(var[w1, 2], var[w2,
                 2]))
             Union <- abs(min(var[w1, 1], var[w2, 1]) - max(var[w1, 2], var[w2, 2]))
             k <- abs(max(var[w1, 2], var[w2, 2]) - min(var[w1, 1], var[w2, 1]))
             total.lenght <- max(var[, 2]) - min(var[, 1])
             if (method == "Gowda.Diday") {
-                D1 <- abs(abs((var[w1, 2] - var[w1, 1])) - abs((var[w2, 2] - var[w2, 
+                D1 <- abs(abs((var[w1, 2] - var[w1, 1])) - abs((var[w2, 2] - var[w2,
                   1])))/k
                 if (var[w1, 1] > var[w2, 2] | var[w1, 2] < var[w2, 1]) {
                   D2 <- (abs(var[w1, 2] - var[w1, 1]) + abs(var[w2, 2] - var[w2, 1]))/k
                 } else {
-                  D2 <- (abs(var[w1, 2] - var[w1, 1]) + abs(var[w2, 2] - var[w2, 1]) - 
+                  D2 <- (abs(var[w1, 2] - var[w1, 1]) + abs(var[w2, 2] - var[w2, 1]) -
                     (2 * Intersect))/k
                 }
                 D3 <- abs(var[w1, 1] - var[w2, 1])/total.lenght
                 Distance <- D1 + D2 + D3
             }
             if (method == "Ichino" | method == "Minkowski") {
-                if (gamma > 0.5) 
+                if (gamma > 0.5)
                   gamma <- 0.5
-                if (gamma < 0) 
+                if (gamma < 0)
                   gamma <- 0
                 if (var[w1, 1] > var[w2, 2] | var[w1, 2] < var[w2, 1]) {
-                  Distance <- Union + gamma * (-abs(var[w1, 2] - var[w1, 1]) - abs(var[w2, 
+                  Distance <- Union + gamma * (-abs(var[w1, 2] - var[w1, 1]) - abs(var[w2,
                     2] - var[w2, 1]))
                 } else {
-                  Distance <- Union - Intersect + gamma * (2 * Intersect - abs(var[w1, 
+                  Distance <- Union - Intersect + gamma * (2 * Intersect - abs(var[w1,
                     2] - var[w1, 1]) - abs(var[w2, 2] - var[w2, 1]))
                 }
             }
             if (method == "Hausdorff") {
-                Distance <- max(abs(var[w1, 1] - var[w2, 1]), abs(var[w1, 2] - var[w2, 
+                Distance <- max(abs(var[w1, 1] - var[w2, 1]), abs(var[w1, 2] - var[w2,
                   2]))
             }
             if (normalize == TRUE) {
@@ -56,7 +56,7 @@ sym.Interval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, metho
 
 
 #' Distance for Symbolic Interval Variables.
-#' @name dist.interval
+#' @name sym.dist.interval
 #' @description This function computes and returns the distance matrix by using the specified
 #' distance measure to compute distance between symbolic interval variables.
 #'
@@ -78,35 +78,35 @@ sym.Interval.distance <- function(sym.data, variable, w1, w2, gamma = 0.5, metho
 #'data('table7')
 #'ex3 <- classic.to.sym(table7, concept=c('Animal'),variables=c('Height', 'Weight')
 #',variables.types=c('$I', '$I'))
-#'dist.interval(ex3,method='Gowda.Diday',normalize=FALSE)
-#'dist.interval(ex3,gamma=0.5,method='Ichino',normalize=FALSE)
-#'dist.interval(ex3,gamma=0.5,method='Minkowski',normalize=FALSE,q=1)
-#'dist.interval(ex3,gamma=0.5,method='Minkowski',normalize=FALSE,q=2)
-#'dist.interval(ex3,gamma=0.5,method='Hausdorff',normalize=FALSE,
+#'sym.dist.interval(ex3,method='Gowda.Diday',normalize=FALSE)
+#'sym.dist.interval(ex3,gamma=0.5,method='Ichino',normalize=FALSE)
+#'sym.dist.interval(ex3,gamma=0.5,method='Minkowski',normalize=FALSE,q=1)
+#'sym.dist.interval(ex3,gamma=0.5,method='Minkowski',normalize=FALSE,q=2)
+#'sym.dist.interval(ex3,gamma=0.5,method='Hausdorff',normalize=FALSE,
 #'SpanNormalize=FALSE,euclidea=TRUE)
-#'dist.interval(ex3,gamma=0.5,method='Hausdorff',normalize=FALSE,
+#'sym.dist.interval(ex3,gamma=0.5,method='Hausdorff',normalize=FALSE,
 #'SpanNormalize=TRUE,euclidea=TRUE)
-dist.interval <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE, 
+sym.dist.interval <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE,
     SpanNormalize = FALSE, q = 1, euclidea = TRUE, pond = rep(1, length(variables))) {
     variables <- (1:(sym.data$M))
     if (sum(pond) != length(variables) & sum(pond) > 1) {
         pond = rep(1/length(variables), length(variables))
     }
-    
+
     for (med in 1:length(method)) {
-        if (method[med] == "Gowda.Diday" | method[med] == "Ichino" | method[med] == 
+        if (method[med] == "Gowda.Diday" | method[med] == "Ichino" | method[med] ==
             "Minkowski" | method[med] == "Hausdorff") {
             result <- sym.data
             h <- 1
             Dissimilarity.matrix <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
-            
+
             if (method[med] == "Minkowski") {
                 for (var in variables) {
                   Matrix <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   Matrix_pond <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   for (j in 1:nrow(result$data)) {
                     for (i in j:nrow(result$data)) {
-                      Matrix[i, j] <- sym.Interval.distance(sym.data, var, i, j, gamma, 
+                      Matrix[i, j] <- sym.Interval.distance(sym.data, var, i, j, gamma,
                         method[med], normalize)
                     }
                   }
@@ -120,14 +120,14 @@ dist.interval <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize
                 }
                 Dissimilarity.matrix <- as.dist(Dissimilarity.matrix^(1/q))
             }
-            
+
             if (method[med] == "Gowda.Diday" | method[med] == "Ichino") {
                 for (var in variables) {
                   Matrix <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   Matrix_pond <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   for (j in 1:nrow(result$data)) {
                     for (i in j:nrow(result$data)) {
-                      Matrix[i, j] <- sym.Interval.distance(sym.data, var, i, j, gamma, 
+                      Matrix[i, j] <- sym.Interval.distance(sym.data, var, i, j, gamma,
                         method[med], normalize)
                     }
                   }
@@ -137,7 +137,7 @@ dist.interval <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize
                 }
                 Dissimilarity.matrix <- as.dist(Dissimilarity.matrix)
             }
-            
+
             if (method[med] == "Hausdorff") {
                 if (normalize == TRUE) {
                   SpanNormalize = FALSE
@@ -147,7 +147,7 @@ dist.interval <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize
                   Matrix <- matrix(c(0), ncol = nrow(result$data), nrow = nrow(result$data))
                   for (j in 1:nrow(result$data)) {
                     for (i in j:nrow(result$data)) {
-                      Matrix[i, j] <- sym.Interval.distance(sym.data, var, i, j, gamma, 
+                      Matrix[i, j] <- sym.Interval.distance(sym.data, var, i, j, gamma,
                         method[med], normalize)
                     }
                   }
@@ -170,7 +170,7 @@ dist.interval <- function(sym.data, gamma = 0.5, method = "Minkowski", normalize
         } else {
             return("Invalid method")
         }
-        
+
         if (med == 1) {
             res <- list(Dissimilarity.matrix)
             names <- matrix(c(method[med]))
