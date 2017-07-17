@@ -4,13 +4,13 @@
 \alias{dist.modal}
 \title{Distance matrix for symbolic data}
 \usage{
-dist.modal(sym.data)
+\method{dist}{modal}(sym.data)
 }
 \arguments{
 \item{sym.data}{Symbolic data table}
 }
 \value{
-return an object of class "dist
+return an object of class 'dist
 }
 \description{
 Distance matrix for symbolic data

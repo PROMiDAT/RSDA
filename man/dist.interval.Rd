@@ -4,7 +4,7 @@
 \alias{dist.interval}
 \title{Distance for Symbolic Interval Variables.}
 \usage{
-dist.interval(sym.data, gamma = 0.5, method = "Minkowski",
+\method{dist}{interval}(sym.data, gamma = 0.5, method = "Minkowski",
   normalize = TRUE, SpanNormalize = FALSE, q = 1, euclidea = TRUE,
   pond = rep(1, length(variables)))
 }
@@ -28,7 +28,7 @@ dist.interval(sym.data, gamma = 0.5, method = "Minkowski",
 \item{variables}{Numeric vector with the number of the variables to use.}
 }
 \value{
-An object of class "dist"
+An object of class 'dist'
 }
 \description{
 This function computes and returns the distance matrix by using the specified
@@ -36,15 +36,15 @@ distance measure to compute distance between symbolic interval variables.
 }
 \examples{
 
-data("table7")
-ex3 <- classic.to.sym(table7, concept=c("Animal"),variables=c("Height", "Weight")
-,variables.types=c("$I", "$I"))
-dist.interval(ex3,method="Gowda.Diday",normalize=FALSE)
-dist.interval(ex3,gamma=0.5,method="Ichino",normalize=FALSE)
-dist.interval(ex3,gamma=0.5,method="Minkowski",normalize=FALSE,q=1)
-dist.interval(ex3,gamma=0.5,method="Minkowski",normalize=FALSE,q=2)
-dist.interval(ex3,gamma=0.5,method="Hausdorff",normalize=FALSE,
+data('table7')
+ex3 <- classic.to.sym(table7, concept=c('Animal'),variables=c('Height', 'Weight')
+,variables.types=c('$I', '$I'))
+dist.interval(ex3,method='Gowda.Diday',normalize=FALSE)
+dist.interval(ex3,gamma=0.5,method='Ichino',normalize=FALSE)
+dist.interval(ex3,gamma=0.5,method='Minkowski',normalize=FALSE,q=1)
+dist.interval(ex3,gamma=0.5,method='Minkowski',normalize=FALSE,q=2)
+dist.interval(ex3,gamma=0.5,method='Hausdorff',normalize=FALSE,
 SpanNormalize=FALSE,euclidea=TRUE)
-dist.interval(ex3,gamma=0.5,method="Hausdorff",normalize=FALSE,
+dist.interval(ex3,gamma=0.5,method='Hausdorff',normalize=FALSE,
 SpanNormalize=TRUE,euclidea=TRUE)
 }

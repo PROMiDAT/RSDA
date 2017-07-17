@@ -4,8 +4,8 @@
 \alias{dist.set}
 \title{Distance for Symbolic Set Variables.}
 \usage{
-dist.set(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE,
-  q = 1, pond = rep(1, length(variables)))
+\method{dist}{set}(sym.data, gamma = 0.5, method = "Minkowski",
+  normalize = TRUE, q = 1, pond = rep(1, length(variables)))
 }
 \arguments{
 \item{sym.data}{A symbolic object}
@@ -23,7 +23,7 @@ dist.set(sym.data, gamma = 0.5, method = "Minkowski", normalize = TRUE,
 \item{variables}{Numeric vector with the number of the variables to use.}
 }
 \value{
-An object of class "dist"
+An object of class 'dist'
 }
 \description{
 This function computes and returns the distance matrix by using the specified

@@ -4,7 +4,7 @@
 \alias{dist.mod}
 \title{dist.modal}
 \usage{
-dist.mod(x, y)
+\method{dist}{mod}(x, y)
 }
 \description{
 dist.modal

@@ -27,8 +27,8 @@
 #' \tabular{ll}{
 #' Package: \tab RSDA\cr
 #' Type: \tab Package\cr
-#' Version: \tab 2.0.1\cr
-#' Date: \tab 2017-07-04\cr
+#' Version: \tab 2.0.2\cr
+#' Date: \tab 2017-07-16\cr
 #' License: \tab GPL (>=2)\cr
 #' }
 #' Most of the function of the package stars from a symbolic data table that can be store in
@@ -111,5 +111,6 @@
 #'                        labels=TRUE)
 #' sym.circle.plot(res$Sym.Prin.Correlations)
 NULL
-utils::globalVariables(c("to","from","interval","n","prob","pca.max","N","M","<<-","." ,"do", "quo"))
+utils::globalVariables(c("to", "from", "interval", "n", "prob", "pca.max", "N", "M",
+    "<<-", ".", "do", "quo"))
 
