@@ -19,10 +19,12 @@
 #' Billard L. and  Diday E. (2006).
 #' Symbolic data analysis: Conceptual statistics and data mining. Wiley, Chichester.
 #' @examples
+#' \dontrun{
 #' data(VeterinaryData)
 #' VD <- VeterinaryData
 #' interval.dist(VD)
 #' interval.dist(VD,distance='centers')
+#' }
 #' @keywords Symbolic Distance
 #' @export
 #' @importFrom stats as.dist
@@ -36,7 +38,7 @@ interval.dist <-
         stop("The two variables have to be interval type")
       nn<-sym.data$N
       mm<-sym.data$M
-      dist.matrix<-matrix(0,nn,2*nn) # Aquí era el error, es 2*nn en lugar de nn
+      dist.matrix<-matrix(0,nn,nn)
       for(i in 1:nn) {
         for(j in 1:i) {
           dist.matrix[i,j]<-interval.dist.tobj(sym.obj(sym.data,i),sym.obj(sym.data,j),
