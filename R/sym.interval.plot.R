@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-plot.sym.interval <- function(info,col=c("blue"),border=FALSE,show.type = TRUE){
+sym.interval.plot <- function(info,col=c("blue"),border=FALSE,show.type = TRUE){
   interval <- as.numeric(info$data[1,])
   name <- paste("[",interval[1],",",interval[2],"]")
   plot(interval+c(-0.5,0.5), c(0,4.1), type= "n", xlab = "", ylab = "",main = paste(info$sym.var.names,ifelse(show.type," (Interval)","")),yaxt='n')

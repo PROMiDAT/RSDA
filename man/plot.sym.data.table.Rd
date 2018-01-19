@@ -2,16 +2,31 @@
 % Please edit documentation in R/plot.sym.data.table.R
 \name{plot.sym.data.table}
 \alias{plot.sym.data.table}
-\title{Title}
+\title{Function for plotting a symbolic data table}
 \usage{
 \method{plot}{sym.data.table}(x, col = NA, border = FALSE, size = 1,
   title = TRUE, show.type = FALSE, reduce = FALSE, ...)
 }
 \arguments{
-\item{reduce}{}
+\item{x}{The symbolic data table.}
+
+\item{col}{A specification for the default plotting color.}
+
+\item{border}{A logical value indicating whether border should be plotted.}
+
+\item{size}{The magnification to be used for each graphic.}
+
+\item{title}{A logical value indicating whether title should be plotted.}
+
+\item{show.type}{A logical value indicating whether type should be plotted.}
+
+\item{reduce}{A logical value indicating whether values different from zero should be plotted in modal and set graphics.}
+}
+\value{
+A plot of the symbolic data table.
 }
 \description{
-Title
+Function for plotting a symbolic data table
 }
 \keyword{Plot}
 \keyword{Symbolic}

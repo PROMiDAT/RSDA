@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-plot.sym.set <- function(info,col=c("blue"),border=FALSE,show.type = TRUE,reduce=FALSE){
+sym.set.plot <- function(info,col=c("blue"),border=FALSE,show.type = TRUE,reduce=FALSE){
   mt <- info$data
   names <- colnames(info$data)
   if(reduce){

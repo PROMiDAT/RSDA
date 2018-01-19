@@ -1,14 +1,14 @@
-#' Title
+#' Function for plotting a symbolic data table
 #'
-#' @param x
-#' @param col
-#' @param border
-#' @param size
-#' @param title
-#' @param show.type
-#' @param reduce
+#' @param x The symbolic data table.
+#' @param col A specification for the default plotting color.
+#' @param border A logical value indicating whether border should be plotted.
+#' @param size The magnification to be used for each graphic.
+#' @param title A logical value indicating whether title should be plotted.
+#' @param show.type A logical value indicating whether type should be plotted.
+#' @param reduce A logical value indicating whether values different from zero should be plotted in modal and set graphics.
 #'
-#' @return
+#' @return A plot of the symbolic data table.
 #' @keywords Plot Symbolic data table
 #' @export
 #' @exportMethod
@@ -43,11 +43,12 @@ plot.sym.data.table <- function(x, col=NA,border=FALSE,size = 1,title=TRUE,show.
   for (index.row in 1:num.row) {
     for (index.col in 1:num.col) {
       var.data <- x[index.row,index.col]
-      switch (var.data$sym.var.types, "$I" = plot.sym.interval(var.data,col,border,show.type=show.type),
-              "$C" = plot.sym.continuos(var.data,col,border,show.type=show.type),
-              "$H" = plot.sym.hist(var.data,col,border,FALSE,show.type=show.type),
-              "$M" = plot.sym.modal(var.data,col,border,FALSE,show.type=show.type,reduce =reduce),
-              "$S" = plot.sym.set(var.data,col,border,show.type=show.type,reduce =reduce))
+      switch (var.data$sym.var.types,
+              "$I" = sym.interval.plot(var.data,col,border,show.type=show.type),
+              "$C" = sym.continuos.plot(var.data,col,border,show.type=show.type),
+              "$H" = sym.hist.plot(var.data,col,border,FALSE,show.type=show.type),
+              "$M" = sym.modal.plot(var.data,col,border,FALSE,show.type=show.type,reduce =reduce),
+              "$S" = sym.set.plot(var.data,col,border,show.type=show.type,reduce =reduce))
     }
   }
 

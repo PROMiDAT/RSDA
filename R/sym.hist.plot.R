@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-plot.sym.hist <- function(info,col=c("blue"),border=FALSE, ylab=TRUE,show.type = TRUE){
+sym.hist.plot <- function(info,col=c("blue"),border=FALSE, ylab=TRUE,show.type = TRUE){
   dataset <- info$data
   namesC <- colnames(dataset)
   matches <- regmatches(namesC, gregexpr("[[:digit:]]+", namesC))

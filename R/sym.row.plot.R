@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-plot.sym.row <- function(data, col=NA,matrix.form=NA,border=FALSE,size = 1, title=TRUE,show.type = FALSE,reduce =FALSE){
+sym.row.plot <- function(data, col=NA,matrix.form=NA,border=FALSE,size = 1, title=TRUE,show.type = FALSE,reduce =FALSE){
   #El tipo de dato es el correcto
   if(!("sym.data.table" %in% class(data))){
     stop("The data type is wrong, only sym.data.table are accepted")
@@ -63,11 +63,12 @@ plot.sym.row <- function(data, col=NA,matrix.form=NA,border=FALSE,size = 1, titl
       var.data <- data[index,]
     else
       var.data <- data[,index]
-    switch (var.data$sym.var.types, "$I" = plot.sym.interval(var.data,col,border,show.type=show.type),
-            "$C" = plot.sym.continuos(var.data,col,border,show.type=show.type),
-            "$H" = plot.sym.hist(var.data,col,border,FALSE,show.type=show.type),
-            "$M" = plot.sym.modal(var.data,col,border,FALSE,show.type=show.type,reduce =reduce),
-            "$S" = plot.sym.set(var.data,col,border,show.type=show.type,reduce =reduce))
+    switch (var.data$sym.var.types,
+            "$I" = sym.interval.plot(var.data,col,border,show.type=show.type),
+            "$C" = sym.continuos.plot(var.data,col,border,show.type=show.type),
+            "$H" = sym.hist.plot(var.data,col,border,FALSE,show.type=show.type),
+            "$M" = sym.modal.plot(var.data,col,border,FALSE,show.type=show.type,reduce =reduce),
+            "$S" = sym.set.plot(var.data,col,border,show.type=show.type,reduce =reduce))
   }
   if(title)
     mtext(toupper(data$sym.obj.names), outer = TRUE, cex = 1.5, side = 3)

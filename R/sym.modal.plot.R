@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-plot.sym.modal <- function(info,col=c("blue"),border=FALSE,ylab=TRUE,show.type = TRUE,reduce=FALSE){
+sym.modal.plot <- function(info,col=c("blue"),border=FALSE,ylab=TRUE,show.type = TRUE,reduce=FALSE){
   mt <- info$data
   names <- colnames(info$data)
   if(reduce){
