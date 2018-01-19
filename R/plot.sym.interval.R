@@ -1,5 +1,6 @@
 #' Title
 #'
+#' @author Andres Navarro
 #' @param info
 #' @param col
 #' @param border

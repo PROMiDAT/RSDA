@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param data
+#' @param x
 #' @param col
 #' @param border
 #' @param size
@@ -35,7 +35,7 @@ plot.sym.data.table <- function(x, col=NA,border=FALSE,size = 1,title=TRUE,show.
   par(mfrow = matrix.form)
   size.factor <- ifelse(is.numeric(size),1.75*(1/size),1.75)
   par(mar=c(0,0,1,0))
-  par(pin = (par()$din/(rep(matrix.form[2],2)*size.factor)) )
+  par(pin = (par()$din/(rep(max(matrix.form),2)*size.factor)) )
   par(omi = c(0,0,0.2,0))
 
 
