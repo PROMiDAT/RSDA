@@ -21,12 +21,24 @@
 \item{show.type}{A logical value indicating whether type should be plotted.}
 
 \item{reduce}{A logical value indicating whether values different from zero should be plotted in modal and set graphics.}
+
+\item{...}{Arguments to be passed to methods.}
 }
 \value{
 A plot of the symbolic data table.
 }
 \description{
 Function for plotting a symbolic data table
+}
+\examples{
+\dontrun{
+data(oils)
+plot(oils)
+plot(oils,border = T,size = 1.3)
+}
+}
+\author{
+Andres Navarro
 }
 \keyword{Plot}
 \keyword{Symbolic}

@@ -1,23 +1,33 @@
-#' Title
+#' Function for plotting one row or one column from the symbolic data table
 #'
-#' @param data
-#' @param col
-#' @param matrix.form
-#' @param border
-#' @param size
-#' @param title
-#' @param show.type
-#' @param reduce
+#' @author Andres Navarro
+#' @param data The row of the symbolic data table.
+#' @param col A specification for the default plotting color.
+#' @param matrix.form A vector of the form c(num.rows,num.columns)
+#' @param border A logical value indicating whether border should be plotted.
+#' @param size The magnification to be used for each graphic.
+#' @param title A logical value indicating whether title should be plotted.
+#' @param show.type A logical value indicating whether type should be plotted.
+#' @param reduce A logical value indicating whether values different from zero should be plotted in modal and set graphics.
 #'
-#' @return
+#' @return A plot of one row from symbolic data table.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data(oils)
+#' sym.row.plot(oils[3,])
+#' sym.row.plot(oils[3,],matrix.form = c(2,2),border=TRUE)
+#' }
 sym.row.plot <- function(data, col=NA,matrix.form=NA,border=FALSE,size = 1, title=TRUE,show.type = FALSE,reduce =FALSE){
   #El tipo de dato es el correcto
   if(!("sym.data.table" %in% class(data))){
     stop("The data type is wrong, only sym.data.table are accepted")
   }
+
+  #if(!(1 %in% c(data$M,data$N))){
+  #  stop("Wrong dimensions on symbolic data table. Try: data[num.row,] or data[,num.col]")
+  #}
 
   # No se ingresaron colores
   if(any(is.na(col)))
