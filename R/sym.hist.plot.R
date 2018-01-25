@@ -19,8 +19,8 @@
 #' sym.hist.plot(data.sym[1,6])
 #' }
 sym.hist.plot <- function(info,col=c("blue"),border=FALSE, ylab=TRUE,show.type = TRUE){
-  #if(info$sym.var.types != "$H")
-  #  stop("The data type is wrong, only $H are accepted")
+  if(info$sym.var.types != "$H")
+    stop("The data type is wrong, only $H are accepted")
   dataset <- info$data
   namesC <- colnames(dataset)
   matches <- regmatches(namesC, gregexpr("[[:digit:]]+", namesC))

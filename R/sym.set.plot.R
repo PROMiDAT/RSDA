@@ -20,8 +20,8 @@
 #' sym.set.plot(data.sym[1,4], reduce = TRUE)
 #' }
 sym.set.plot <- function(info,col=c("blue"),border=FALSE,show.type = TRUE,reduce=FALSE){
-  #if(info$sym.var.types != "$S")
-  #  stop("The data type is wrong, only $S are accepted")
+  if(info$sym.var.types != "$S")
+    stop("The data type is wrong, only $S are accepted")
   mt <- info$data
   names <- colnames(info$data)
   if(reduce){
