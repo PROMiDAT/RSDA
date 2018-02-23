@@ -1,7 +1,7 @@
-#' Function for plotting a symbolic data table
+#' Function for plotting a symbolic object
 #'
 #' @author Andres Navarro
-#' @param x The symbolic data table.
+#' @param x The symbolic object.
 #' @param col A specification for the default plotting color.
 #' @param matrix.form A vector of the form c(num.rows,num.columns).
 #' @param border A logical value indicating whether border should be plotted.
@@ -27,7 +27,9 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
     stop("The data type is wrong, only sym.data.table are accepted")
 
   if(any(is.na(col))) # No se ingresaron colores
-    col <- brewer.pal(n = 12, name = "Set3")
+    col <- distinctColorPalette(max(x$sym.var.length)) #brewer.pal(n = 12, name = "Set3")
+
+  show(max(x$sym.var.length))
 
   title <- !(x$N > 1 && x$M == 1) #si filas > 1 y columnas == 1 tenemos que recorrer en una columna y no mostrar titulo
 
