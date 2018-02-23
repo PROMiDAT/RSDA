@@ -9,7 +9,7 @@ Description: Symbolic Data Analysis (SDA) was proposed by professor Edwin Diday 
 License: GPL (>=2)
 Encoding: UTF-8
 Depends: R (>= 3.4.0)
-Imports: RJSONIO, glmnet, abind, scatterplot3d, graphics, stats, utils, FactoMineR (>= 1.36), XML, scales, ggplot2, princurve, sqldf, dplyr (>= 0.7.1), tidyr, stringr, lazyeval, nloptr (>= 1.0.4) ,xtable,pander, rlang(>= 0.1.1), RColorBrewer
+Imports: RJSONIO, glmnet, abind, scatterplot3d, graphics, stats, utils, FactoMineR (>= 1.36), XML, scales, ggplot2, princurve, sqldf, dplyr (>= 0.7.1), tidyr, stringr, lazyeval, nloptr (>= 1.0.4) ,xtable,pander, rlang(>= 0.1.1), randomcoloR
 URL: http://www.oldemarrodriguez.com
 Suggests: testthat
 RoxygenNote: 6.0.1
