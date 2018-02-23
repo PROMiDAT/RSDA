@@ -29,7 +29,7 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
   if(any(is.na(col))) # No se ingresaron colores
     col <- brewer.pal(n = 12, name = "Set3")
 
-  title <- !(byColm <- (x$N > 1 && x$M == 1)) #si filas > 1 y columnas == 1 tenemos que recorrer en una columna y no mostrar titulo
+  title <- !(x$N > 1 && x$M == 1) #si filas > 1 y columnas == 1 tenemos que recorrer en una columna y no mostrar titulo
 
 
   if(any(!is.na(matrix.form))){ #Si se tiene matrix.form
@@ -38,7 +38,7 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
     if(prod(matrix.form) < x$M*x$N) #El numero de espacios tiene que ser igual o superior al de variables
       stop("Wrong dimensions on matrix.form")
   }else{ #Si no hay matriz se crea una, segun la orientacion de la fila
-    matrix.form <- if(byColm) c(x$N,1) else c(x$N,x$M)
+    matrix.form <- c(x$N,x$M)
   }
 
   size.factor <- ifelse(is.numeric(size),1.75*(1/size),1.75) #Determina un tamaño por defecto de los graficos (proporcion agregada)
