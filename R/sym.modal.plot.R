@@ -1,6 +1,6 @@
 #' sym.modal.plot
 #' @keywords internal
-sym.modal.plot <- function(info,col=c("blue"),border=FALSE,ylab=TRUE,show.type = TRUE,reduce=FALSE){
+sym.modal.plot <- function(info,col=c("blue"),border=FALSE, show.type = TRUE, reduce=FALSE){
   if(info$sym.var.types != "$M")
     stop("The data type is wrong, only $M are accepted")
   mt <- info$data
@@ -15,8 +15,10 @@ sym.modal.plot <- function(info,col=c("blue"),border=FALSE,ylab=TRUE,show.type =
     }
   }
   mt <- as.matrix(mt)
-  barplot(mt, main=paste(info$sym.var.names,ifelse(show.type," (Modal)","")), xlab="", ylab= ifelse(ylab,"% Percentage",""),
+  barplot(mt, main=paste(info$sym.var.names,ifelse(show.type," (Modal)","")), xlab="", ylab= "", yaxt="n",
           col = col,beside=TRUE, names.arg=names,ylim = c(0,1),cex.names=.8)
+  graphics::axis(2, at=seq(0, 1, 0.2), labels=sprintf(round(seq(0, 100, 20)), fmt="%2.f%%"), las=1)
+
   if(border)
     box("figure", col="black")
 }

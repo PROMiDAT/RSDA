@@ -16,8 +16,9 @@ sym.set.plot <- function(info,col=c("blue"),border=FALSE,show.type = TRUE,reduce
     }
   }
   mt <- as.matrix(mt)
-  barplot(mt, main=paste(info$sym.var.names,ifelse(show.type," (Set)","")), xlab="", ylab="",
+  barplot(mt, main=paste(info$sym.var.names,ifelse(show.type," (Set)","")), xlab="", ylab="", yaxt="n",
           names.arg=names,ylim = c(0,ifelse(max(mt)<0.5,0.5,1)), beside=TRUE, col=col,cex.names=.8)
+  graphics::axis(2, at=seq(0, 1, 0.2), labels=sprintf(round(seq(0, 100, 20)), fmt="%2.f%%"), las=1)
   if(border)
     box("figure", col="black")
 }
