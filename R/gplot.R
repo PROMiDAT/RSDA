@@ -71,11 +71,11 @@ gplot <- function(data, color=NA, matrix.form=NA, border=FALSE, show.type = FALS
 }
 
 
-# rm(list = ls())
-# library(RSDA)
-# data("example3")
-# #gplot(example3[1:4,1])
-# gplot(example3)
+rm(list = ls())
+library(RSDA)
+data("example3")
+#gplot(example3[1:4,1])
+gplot(example3[1,],reduce = T )
 
 
 

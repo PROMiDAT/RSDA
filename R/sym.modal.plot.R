@@ -19,8 +19,8 @@ sym.modal.plot <- function(info,col=c("blue"),border=FALSE, show.type = TRUE, re
   mt <- as.matrix(mt) #obligatorio
 
   #graficamos las barras
-  barplot(mt, main=paste(info$sym.var.names,ifelse(show.type," (Modal)","")), xlab="", ylab= "", yaxt="n",
-          col = col,beside=TRUE, names.arg=names,ylim = c(0,1),cex.names=.8)
+  graphics::barplot(mt, main=paste(info$sym.var.names,ifelse(show.type," (Modal)","")), xlab="", ylab= "", yaxt="n",
+                    col = col,beside=TRUE, names.arg=names,cex.names=.8,space = c(0,0.05))
   graphics::axis(2, at=seq(0, 1, 0.2), labels=sprintf(round(seq(0, 100, 20)), fmt="%2.f%%"), las=1) #los y labels con %
 
   if(border) #se pone el borde en negro

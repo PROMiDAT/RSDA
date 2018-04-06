@@ -22,8 +22,7 @@
 #' plot(oils,border = T,size = 1.3)
 #' }
 plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, size = 1, title = TRUE, show.type = FALSE, reduce = FALSE, ...){
-
-  if(!("sym.data.table" %in% class(x)))#El tipo de dato es el correcto
+  if(!("sym.data.table" %in% class(x)))#El tipo de dato es el incorrecto
     stop("The data type is wrong, only sym.data.table are accepted")
 
   if(any(is.na(col))) # No se ingresaron colores
@@ -41,7 +40,7 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
     matrix.form <- c(x$N,x$M)
   }
 
-  size.factor <- ifelse(is.numeric(size),1.75*(1/size),1.75) #Determina un tamaño por defecto de los graficos (proporcion agregada)
+  size.factor <- ifelse(is.numeric(size),1.74*(1/size),1.74) #Determina un tamaño por defecto de los graficos (proporcion agregada)
 
   #Guarda la configuracion de par original
   def.par <- par(no.readonly = T)
@@ -68,6 +67,12 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
   if(title)
     mtext(toupper(x$sym.obj.names), outer = TRUE, cex = 1.5, side = 3)
 
-  #retorna al estado original
-  par(def.par)
+  tryCatch(expr = {
+    par(def.par) #retorna al estado original
+  },error = function(err){
+    suppressMessages(dev.off())
+    message("The size of the device is too small or the \"size\" parameter needs to be adjusted.")
+  },warning = function(war) {
+    message(paste0("ImputeValues: ",war))
+  })
 }

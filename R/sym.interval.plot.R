@@ -8,10 +8,12 @@ sym.interval.plot <- function(info, col=c("blue"), border=FALSE, show.type = TRU
   name <- paste("[",interval[1],",",interval[2],"]") #El label que va en el centro del grafico
 
   #grafica el plano
-  plot(interval+c(-0.5,0.5), c(0,4.1), type= "n", xlab = "", ylab = "",main = paste(info$sym.var.names,ifelse(show.type," (Interval)","")), yaxt='n')
-  rect(interval[1],-1,interval[2],3.5,col=col) #rectangulo del intervalo
-  center <- c(mean(c(interval[1], interval[2])), mean(c(-1, 3.5))) #encuentra el centro del rectangulo
-  text(center[1], center[2], labels = name,cex=ifelse(par()$pin[1]<=1.5,par()$pin[1],1.5)) #pone el label con el intevalo en el centro
+  plot(interval + c(-0.4,0.4), c(0, 3.5), type= "n", xlab= "", ylab= "", yaxt= 'n',
+       main = paste(toupper(info$sym.var.names),ifelse(show.type," (Interval)","")))
+  rect(interval[1], -1, interval[2], 3.5, col= col) #rectangulo del intervalo
+  center <- c( mean(c(interval[1], interval[2])), mean(c(-1, 4)) ) #encuentra el centro del rectangulo
+  text(center[1], center[2], labels= name, #pone el label con el intevalo en el centro
+       cex= ifelse(par()$pin[1]<=1.5, par()$pin[1], 1.5)) #decide ele tamaño del label
   if(border) #se pone el borde en negro
     box("figure", col="black")
 }
