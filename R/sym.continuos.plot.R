@@ -13,8 +13,8 @@
 #' \dontrun{
 #' data(ex1_db2so)
 #' data.sym <- classic.to.sym(ex1_db2so, concept=c("state", "sex"),
-#'                            variables=c("county", "group", "age","age","age","age"),
-#'                            variables.types=c("$I", "$C", "$C", "$S", "$M","$H"))
+#'                            col.names = c(county, group, age,age,age,age),
+#'                            variables.types=c(county = type.interval(), group = type.continuous(), age = type.continuous(), age = type.continuous(), age = type.modal(),age = type.histogram()))
 #' sym.continuos.plot(data.sym[1,2])
 #' }
 sym.continuos.plot <- function(info,col=c("blue"),border=FALSE,show.type = TRUE){

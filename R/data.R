@@ -95,8 +95,8 @@
 #' data(ex1_db2so)
 #' ex1 <- ex1_db2so
 #' result <- classic.to.sym(ex1, concept=c('state', 'sex'),
-#'                          variables=c('county', 'group', 'age','age'),
-#'                          variables.types=c('$C', '$I', '$H', '$S'))
+#'                          col.names = c(county, group, age, age),
+#'                          col.types = c(county = type.continuous(), group = type.histogram(), age = type.histogram(), age = type.set()))
 #' result
 #' @keywords datasets
 "ex1_db2so"
@@ -586,8 +586,8 @@
 #' names(us.crime)
 #' nrow(us.crime)
 #' result  <- classic.to.sym(us.crime, concept='state',
-#'                           variables=c('NumInShelters', 'NumImmig'),
-#'                           variables.types=c('$H', '$H'))
+#'                           col.names =c(NumInShelters, NumImmig),
+#'                           col.types=c(NumInShelters = type.histogram(), NumImmig = type.histogram()))
 #' result
 #' @keywords datasets
 "USCrime"
