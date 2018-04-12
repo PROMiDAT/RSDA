@@ -70,7 +70,7 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
   tryCatch(expr = {
     par(def.par) #retorna al estado original
   },error = function(err){
-    suppressMessages(dev.off())
+    suppressMessages(grDevices::dev.off())
     message("The size of the device is too small or the \"size\" parameter needs to be adjusted.")
   },warning = function(war) {
     message(paste0("ImputeValues: ",war))
