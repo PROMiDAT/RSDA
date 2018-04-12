@@ -1,4 +1,4 @@
-gplot <- function(data, color=NA, matrix.form=NA, border=FALSE, show.type = FALSE, reduce =FALSE, fill=NA,font.size = 1, background.color = "white", plot = TRUE){
+gplot <- function(data, color=NA, matrix.form=NA, border=FALSE, show.type = FALSE, reduce =FALSE, fill=NA,font.size = 1, background.color = "white",plot = TRUE){
   if(!("sym.data.table" %in% class(data))){ #El tipo de dato no es el correcto
     stop("The data type is wrong, only sym.data.table are accepted")
   }
@@ -59,11 +59,11 @@ gplot <- function(data, color=NA, matrix.form=NA, border=FALSE, show.type = FALS
       var.data <- data[index.row,index.col] #else  data[,index]
       pos <- as.data.frame(which(layout == ((index.row-1)*data$M) + index.col, arr.ind = TRUE)) #obtiene la posicion en viewport
       switch (var.data$sym.var.types,
-              "$I" = view.gplot(graphics.results[[length(graphics.results)+1]] <- sym.interval.gplot(var.data, color, border, show.type,fill, size.text, background.color), pos$row, pos$col, plot),
-              "$C" = view.gplot(graphics.results[[length(graphics.results)+1]] <- sym.continuos.gplot(var.data, color, border, show.type, size.text, background.color), pos$row,pos$col,plot),
-              "$H" = view.gplot(graphics.results[[length(graphics.results)+1]] <- sym.hist.gplot(var.data, color, border, show.type,fill,size.text, background.color), pos$row,pos$col,plot),
-              "$M" = view.gplot(graphics.results[[length(graphics.results)+1]] <- sym.modal.gplot(var.data, color, border, show.type, reduce, fill,size.text, background.color), pos$row,pos$col,plot),
-              "$S" = view.gplot(graphics.results[[length(graphics.results)+1]] <- sym.set.gplot(var.data, color, border, show.type, reduce, fill, background.color), pos$row,pos$col,plot)
+              "$I" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.interval.gplot(var.data, color, border, show.type,fill, size.text, background.color), pos$row, pos$col, plot),
+              "$C" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.continuos.gplot(var.data, color, border, show.type, size.text, background.color), pos$row,pos$col,plot),
+              "$H" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.hist.gplot(var.data, color, border, show.type,fill,size.text, background.color), pos$row,pos$col,plot),
+              "$M" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.modal.gplot(var.data, color, border, show.type, reduce, fill,size.text, background.color), pos$row,pos$col,plot),
+              "$S" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.set.gplot(var.data, color, border, show.type, reduce, fill, background.color), pos$row,pos$col,plot)
       )
     }
   }
