@@ -15,7 +15,12 @@
 #' data(ex1_db2so)
 #' data.sym <- classic.to.sym(ex1_db2so, concept=c("state", "sex"),
 #'                            col.names = c(county, group, age,age,age,age),
-#'                            variables.types=c(county = type.interval(), group = type.continuous(), age = type.continuous(), age = type.continuous(), age = type.modal(),age = type.histogram()))
+#'                            variables.types=c(county = type.interval(),
+#'                            group = type.continuous(),
+#'                            age = type.continuous(),
+#'                            age = type.continuous(),
+#'                            age = type.modal(),
+#'                            age = type.histogram()))
 #' sym.hist.plot(data.sym[1,6])
 #' }
 sym.hist.plot <- function(info,col=c("blue"),border=FALSE, ylab=TRUE,show.type = TRUE){

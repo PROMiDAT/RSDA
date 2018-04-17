@@ -4,7 +4,7 @@
 \alias{type.continuous}
 \title{Symbolic continuous type}
 \usage{
-type.continuous(.fun = NULL)
+type.continuous(.fun = mean)
 }
 \description{
 Symbolic continuous type

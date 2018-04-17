@@ -79,7 +79,7 @@ type.interval  <- function(){
 
 #' Symbolic continuous type
 #' @keywords internal
-type.continuous  <- function(.fun = NULL){
+type.continuous  <- function(.fun = mean){
   continuous <- function(x){
     .fun = .fun
     var.name <- colnames(x[,2])
@@ -110,15 +110,15 @@ type.histogram <- function(bins = NA_integer_){
     bins <- c(paste0("[",bins[-length(bins)],")"),paste0("[",bins[length(bins)],"]"))
 
     calculate.hist <- x %>% dplyr::group_by(concept) %>%
-      do(hist = hist(.[,2][[1]],plot = F,right = F,breaks = breaks)$counts)
+      dplyr::do(hist = hist(.[,2][[1]],plot = F,right = F,breaks = breaks)$counts)
     calculate.probs <- calculate.hist %>%
       split(calculate.hist$concept) %>%
-      map_dfr(~as.data.frame(t(round(.$hist[[1]]/sum(.$hist[[1]]),2))))
+      purrr::map_dfr(~as.data.frame(t(round(.$hist[[1]]/sum(.$hist[[1]]),2))))
 
     var_name <- paste0(tolower(colnames(x[,2])), ".hist")
     df.out <- data.frame(concept = calculate.hist$concept,`$H` = "$H", var_name = length(bins),calculate.probs)
     colnames(df.out) <- c("concept","$H",var_name,bins)
-    as_data_frame(df.out)
+    tibble::as_data_frame(df.out)
   }
   class(histogram) <- c("funtion","fun_histogram")
   histogram

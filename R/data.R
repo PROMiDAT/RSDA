@@ -96,7 +96,10 @@
 #' ex1 <- ex1_db2so
 #' result <- classic.to.sym(ex1, concept=c('state', 'sex'),
 #'                          col.names = c(county, group, age, age),
-#'                          col.types = c(county = type.continuous(), group = type.histogram(), age = type.histogram(), age = type.set()))
+#'                          col.types = c(county = type.continuous(),
+#'                          group = type.histogram(),
+#'                          age = type.histogram(),
+#'                           age = type.set()))
 #' result
 #' @keywords datasets
 "ex1_db2so"
@@ -361,11 +364,13 @@
 #' Billard L. and  Diday E. (2006).
 #' Symbolic data analysis: Conceptual statistics and data mining. Wiley, Chichester.
 #' @examples
+#'\dontrun{
 #' data(facedata)
 #' res.vertex.ps<-sym.interval.pc(facedata,'vertex',150,FALSE,FALSE,TRUE)
 #' class(res.vertex.ps$sym.prin.curve) <- c('sym.data.table')
 #' sym.scatterplot(res.vertex.ps$sym.prin.curve[,1], res.vertex.ps$sym.prin.curve[,2],
 #'                 labels=TRUE,col='red',main='PSC Face Data')
+#'                 }
 #' @keywords datasets
 "facedata"
 
@@ -587,7 +592,8 @@
 #' nrow(us.crime)
 #' result  <- classic.to.sym(us.crime, concept='state',
 #'                           col.names =c(NumInShelters, NumImmig),
-#'                           col.types=c(NumInShelters = type.histogram(), NumImmig = type.histogram()))
+#'                           col.types=c(NumInShelters = type.histogram(),
+#'                            NumImmig = type.histogram()))
 #' result
 #' @keywords datasets
 "USCrime"

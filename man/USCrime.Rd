@@ -24,7 +24,8 @@ names(us.crime)
 nrow(us.crime)
 result  <- classic.to.sym(us.crime, concept='state',
                           col.names =c(NumInShelters, NumImmig),
-                          col.types=c(NumInShelters = type.histogram(), NumImmig = type.histogram()))
+                          col.types=c(NumInShelters = type.histogram(),
+                           NumImmig = type.histogram()))
 result
 }
 \references{
