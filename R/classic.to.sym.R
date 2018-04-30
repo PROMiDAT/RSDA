@@ -3,9 +3,9 @@
 #' @name classic.to.sym
 #' @author Carlos Aguero.
 #' @description Generate a symbolic data table from a classic data table.
-#' @usage classic.to.sym(x, concept, col.names, col.types)
+#' @usage classic.to.sym(data, concept, col.names, col.types)
 #'
-#' @param x A data.frame.
+#' @param data A data.frame.
 #' @param concept These are the variable that we are going to use a concepts.
 #' @param col.names These are the variables that we want to include in the symbolic data table.
 #' @param col.types A vector with names and the type of symbolic data to use, the available types are type_histogram (), type_continuous (), type.set (), type.modal (), by default type_histogram () is used for numeric variables and type_modal () for the categorical variables.
@@ -16,12 +16,12 @@
 #' complex data. Springer, Germany.
 #' @seealso read.sym.table
 #' @examples
-#'result <- classic.to.sym(x = iris,
+#'result <- classic.to.sym(data = iris,
 #'               concept = "Species",
 #'               col.names = c(Sepal.Length,Sepal.Width,Petal.Length,Petal.Width))
 #' result
 #'
-#' result <- classic.to.sym(x = iris,
+#' result <- classic.to.sym(data = iris,
 #'concept = "Species", # concepto
 #'col.names = c(Sepal.Length,Sepal.Width,Petal.Length,Petal.Width), # variable a utilizar
 #'col.types = c(Sepal.Length = type.interval(), # tipo para cada una de las variable
@@ -33,13 +33,13 @@
 #' @export
 #' @import sqldf
 #'
-classic.to.sym <- function(x = NULL, concept = NULL, col.names = NULL, col.types = NULL){
+classic.to.sym <- function(data = NULL, concept = NULL, col.names = NULL, col.types = NULL){
   col.names <- enexpr(col.names)
-  x <- add_concept(x = x,
+  data <- add_concept(x = data,
                    concept = concept,
                    col.names = !!col.names)
-  vars.selected <- c(names(col.types),colnames(x)[!colnames(x) %in% c(names(col.types), "concept")])
-  meta.data <- create.meta.data(x, col.types)
+  vars.selected <- c(names(col.types),colnames(data)[!colnames(data) %in% c(names(col.types), "concept")])
+  meta.data <- create.meta.data(data, col.types)
 
   data. <- remove_meta_info(meta.data)
   symbolic.object <- list()

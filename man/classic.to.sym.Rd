@@ -4,10 +4,10 @@
 \alias{classic.to.sym}
 \title{Generate a symbolic data table}
 \usage{
-classic.to.sym(x, concept, col.names, col.types)
+classic.to.sym(data, concept, col.names, col.types)
 }
 \arguments{
-\item{x}{A data.frame.}
+\item{data}{A data.frame.}
 
 \item{concept}{These are the variable that we are going to use a concepts.}
 
@@ -22,12 +22,12 @@ The symbolic data table.
 Generate a symbolic data table from a classic data table.
 }
 \examples{
-result <- classic.to.sym(x = iris,
+result <- classic.to.sym(data = iris,
               concept = "Species",
               col.names = c(Sepal.Length,Sepal.Width,Petal.Length,Petal.Width))
 result
 
-result <- classic.to.sym(x = iris,
+result <- classic.to.sym(data = iris,
 concept = "Species", # concepto
 col.names = c(Sepal.Length,Sepal.Width,Petal.Length,Petal.Width), # variable a utilizar
 col.types = c(Sepal.Length = type.interval(), # tipo para cada una de las variable
