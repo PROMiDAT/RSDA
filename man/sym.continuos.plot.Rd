@@ -8,6 +8,27 @@ sym.continuos.plot(info, col = c("blue"), border = FALSE,
   show.type = TRUE)
 }
 \description{
+<<<<<<< HEAD
 sym.continuos.plot
+=======
+Function for plotting one "continuos" type value from the symbolic data table
+}
+\examples{
+\dontrun{
+data(ex1_db2so)
+data.sym <- classic.to.sym(ex1_db2so, concept=c("state", "sex"),
+                           col.names = c(county, group, age,age,age,age),
+                           variables.types=c(county = type.interval(),
+                           group = type.continuous(),
+                           age = type.continuous(),
+                            age = type.continuous(),
+                            age = type.modal(),
+                            age = type.histogram()))
+sym.continuos.plot(data.sym[1,2])
+}
+}
+\author{
+Andres Navarro
+>>>>>>> master
 }
 \keyword{internal}
