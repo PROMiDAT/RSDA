@@ -13,8 +13,7 @@ classic.to.sym(data, concept, col.names, col.types)
 
 \item{col.names}{These are the variables that we want to include in the symbolic data table.}
 
-\item{variables.types}{These are the variables symbolic types (continuos, interval, set or histograma)
-of the variables that we want to inlude in the symbolic data table.}
+\item{col.types}{A vector with names and the type of symbolic data to use, the available types are type_histogram (), type_continuous (), type.set (), type.modal (), by default type_histogram () is used for numeric variables and type_modal () for the categorical variables.}
 }
 \value{
 The symbolic data table.
