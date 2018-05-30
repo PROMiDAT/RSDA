@@ -61,9 +61,9 @@ gplot <- function(data, color=NA, matrix.form=NA, border=FALSE, show.type = FALS
       switch (var.data$sym.var.types,
               "$I" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.interval.gplot(var.data, color, border, show.type,fill, size.text, background.color), pos$row, pos$col, plot),
               "$C" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.continuos.gplot(var.data, color, border, show.type, size.text, background.color), pos$row,pos$col,plot),
-              "$H" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.hist.gplot(var.data, color, border, show.type,fill,size.text, background.color), pos$row,pos$col,plot),
-              "$M" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.modal.gplot(var.data, color, border, show.type, reduce, fill,size.text, background.color), pos$row,pos$col,plot),
-              "$S" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.set.gplot(var.data, color, border, show.type, reduce, fill, background.color), pos$row,pos$col,plot)
+              "$H" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.hist.gplot(var.data, color, border, show.type,fill, size.text, background.color), pos$row,pos$col,plot),
+              "$M" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.modal.gplot(var.data, color, border, show.type, reduce, fill, size.text, background.color), pos$row,pos$col,plot),
+              "$S" = graphics.results[[length(graphics.results)+1]] <- view.gplot(sym.set.gplot(var.data, color, border, show.type, reduce, fill, size.text, background.color), pos$row,pos$col,plot)
       )
     }
   }

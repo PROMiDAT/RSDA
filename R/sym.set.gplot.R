@@ -1,6 +1,6 @@
 #' sym.set.gplot
 #' @keywords internal
-sym.set.gplot <- function(info, color=c("black"), border=FALSE, show.type = TRUE, reduce=FALSE, fill = "white",background.color = "gray"){
+sym.set.gplot <- function(info, color=c("black"), border=FALSE, show.type = TRUE, reduce=FALSE, fill = "white",font.size = 1,background.color = "gray"){
   if(info$sym.var.types != "$S")  #Si el tipo no es el correcto
     stop("The data type is wrong, only $S are accepted")
 
@@ -40,5 +40,5 @@ sym.set.gplot <- function(info, color=c("black"), border=FALSE, show.type = TRUE
           panel.grid.major = element_blank(), #elimina las lineas del fondo
           panel.grid.minor = element_blank(),#elimina las lineas del fondo
           axis.text = element_text(colour = color), #Color del texto
-          axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 1, size = 1)) #rota los labels del eje y
+          axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 1, size = 10*font.size)) #rota los labels del eje y
 }
