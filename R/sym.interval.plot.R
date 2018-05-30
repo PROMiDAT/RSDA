@@ -5,7 +5,7 @@ sym.interval.plot <- function(info, col=c("blue"), border=FALSE, show.type = TRU
     stop("The data type is wrong, only $I are accepted")
 
   interval <- as.numeric(info$data[1,]) #sacamos el intervalo
-  name <- paste("[",interval[1],",",interval[2],"]") #El label que va en el centro del grafico
+  name <- paste("[",round(interval[1],2),",",round(interval[2],2),"]") #El label que va en el centro del grafico
 
   #grafica el plano
   plot(interval + c(-0.4,0.4), c(0, 3.5), type= "n", xlab= "", ylab= "", yaxt= 'n',

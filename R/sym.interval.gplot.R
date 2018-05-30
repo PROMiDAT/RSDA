@@ -13,7 +13,7 @@ sym.interval.gplot <- function(info, color=c("black"), border=FALSE, show.type =
   d <- data.frame(x1 = as.numeric(info$data[1]), #El primer valor del intervalo
                   x2 = as.numeric(info$data[2]), #El segundo valor del intervalo
                   y1=0, y2=3.5,                    #Valores del rectangulo
-                  r=paste0("[", as.character(info$data[1]),",", as.character(info$data[2]),"]")) #Leyenda dentro del rectangulo
+                  r=paste0("[", round(info$data[1],2),",", round(info$data[2],2),"]")) #Leyenda dentro del rectangulo
   ggplot() +
     ggtitle(paste(toupper(info$sym.var.names),ifelse(show.type," (Interval)",""))) + #Titulo
     scale_y_continuous(limits = c(0,4),expand = c(0,0)) + #Valores del eje y
