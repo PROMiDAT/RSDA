@@ -21,7 +21,7 @@
 #' plot(oils)
 #' plot(oils,border = T,size = 1.3)
 #' }
-plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, size = 1, title = TRUE, show.type = FALSE, reduce = FALSE, ...){
+plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, size = 1, title = TRUE, show.type = FALSE,font.size = 1, reduce = FALSE, ...){
   if(!("sym.data.table" %in% class(x)))#El tipo de dato es el incorrecto
     stop("The data type is wrong, only sym.data.table are accepted")
 
@@ -48,7 +48,8 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
   par(mfrow = matrix.form)
   par(mar=c(0,0,1,0))
   par(pin = (par()$din/(rep(max(matrix.form),2)*size.factor)))
-  par(cex.axis = 0.7)
+  #par(cex.axis = 0.7 * font.size)
+  par(cex = 0.7 * font.size)
 
   #Grafica las variables
   for (index.row in 1:x$N) {
