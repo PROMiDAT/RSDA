@@ -17,7 +17,7 @@ sym.continuos.gplot <- function(info, color=c("black"), border=FALSE, show.type 
           axis.title.y=element_blank(),#Quita elementos de los ejes
           axis.ticks.y =element_blank(), #Quita elementos de los ejes
           axis.text.y = element_blank(), #Quita elementos de los ejes
-          panel.border=element_rect(linetype = "dashed", fill = NA, colour = color), #Borde del plot
+          panel.border=element_rect(fill = NA, colour = color), #Borde del plot
           plot.background = element_rect(fill = NA,size = ifelse(border,1,0),color="black"), #Borde de la figura
           panel.background = element_rect(fill = background.color, colour = NA), #color del fondo
           panel.grid.major = element_blank(), #elimina las lineas del fondo
