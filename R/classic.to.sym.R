@@ -154,7 +154,7 @@ type.modal <- function(){
   modal <- function(x){
     # se calcula la frecuencia para de las categorias para cada uno de los conceptos
     split.df <- x %>% split(x$concept)
-    props.df <- split.df %>% purrr::map_dfr(~as.data.frame(t(round(as.numeric(prop.table(table(.[, 2]))),2))))
+    props.df <- split.df %>% purrr::map_dfr(~as.data.frame(t(as.numeric(prop.table(table(.[, 2]))))))
 
     # se completa el data.frame con tipo, largo y nombres de columnas
     var.name <- paste0(gsub("\\s",".",tolower(colnames(x[,2]))),".modal")
