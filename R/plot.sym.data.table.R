@@ -21,7 +21,8 @@
 #' plot(oils)
 #' plot(oils,border = T,size = 1.3)
 #' }
-plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, size = 1, title = TRUE, show.type = FALSE,font.size = 1, reduce = FALSE, ...){
+plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, size = 1,
+                                title = TRUE, show.type = FALSE,font.size = 1, reduce = FALSE, hist.angle.x = 60, ...){
   if(!("sym.data.table" %in% class(x)))#El tipo de dato es el incorrecto
     stop("The data type is wrong, only sym.data.table are accepted")
 
@@ -58,7 +59,7 @@ plot.sym.data.table <- function(x, col = NA, matrix.form = NA, border = FALSE, s
       switch (var.data$sym.var.types,
               "$I" = sym.interval.plot(var.data, col, border, show.type),
               "$C" = sym.continuos.plot(var.data, col, border, show.type),
-              "$H" = sym.hist.plot(var.data, col, border, show.type),
+              "$H" = sym.hist.plot(var.data, col, border, show.type,hist.angle.x),
               "$M" = sym.modal.plot(var.data, col, border, show.type, reduce),
               "$S" = sym.set.plot(var.data, col, border, show.type, reduce))
     }
