@@ -6,7 +6,7 @@ sym.hist.plot <- function(info, col=c("blue"), border=FALSE, show.type = TRUE, a
 
   dataset <- as.matrix(info$data) #obtenemos los datos
   namesC <- colnames(dataset) #obtenemos los nombres
-  matches <- regmatches(namesC, gregexpr("[[:digit:]]+\\.?[[:digit:]]+", namesC)) #obtenemos los numeros de los nombres
+  matches <- regmatches(namesC, gregexpr("0|([[:digit:]]+\\.?[[:digit:]]+)", namesC)) #obtenemos los numeros de los nombres
   breaks <- as.numeric(unlist(matches))
   i <- seq(1,length(breaks),2)
   j <- seq(2,length(breaks),2)
