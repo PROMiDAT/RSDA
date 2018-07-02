@@ -10,7 +10,7 @@ sym.continuos.gplot <- function(info, color=c("black"), border=FALSE, show.type 
   continuos <- as.numeric(info$data) #El valor continuo
   ggplot()  +
     geom_vline(xintercept = continuos, linetype="dashed", color = color)+ # La linea vertical en el eje x
-    geom_text(aes(continuos,2,label = continuos), size=8*font.size) + # El numero continuo como leyenda
+    geom_text(aes(continuos,2,label = round(continuos,2)), size=8*font.size) + # El numero continuo como leyenda
     ggtitle(paste(toupper(info$sym.var.names),ifelse(show.type," (Continuos)",""))) + # Titulo del plot
     theme(plot.title = element_text(hjust = 0.5,color = color),#Configuracion del titulo
           axis.title.x=element_blank(),#Quita elementos de los ejes
