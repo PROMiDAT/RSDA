@@ -65,7 +65,7 @@ sym.interval.pc <- function(sym.data, method = c("vertex", "centers"), maxit, pl
 
     if ((sym.data$sym.var.types[1] != "$C") && (sym.data$sym.var.types[1] != "$I"))
         stop("Variables have to be continuos or Interval") else if (sym.data$sym.var.types[1] == "$C")
-        res <- principal.curve(sym.data$data, plot.true = plot, maxit = maxit) else if (sym.data$sym.var.types[1] == "$I") {
+        res <- principal_curve(sym.data$data, plot.true = plot, maxit = maxit) else if (sym.data$sym.var.types[1] == "$I") {
 
         vertex <- vertex.interval(sym.data)
         individuals <- scale(as.matrix(vertex$vertex), scale = scale, center = center)
@@ -75,7 +75,7 @@ sym.interval.pc <- function(sym.data, method = c("vertex", "centers"), maxit, pl
 
             centers <- centers.interval(sym.data)
 
-            res <- principal.curve(as.matrix(centers), plot.true = plot, maxit = maxit)
+            res <- principal_curve(as.matrix(centers), plot.true = plot, maxit = maxit)
 
             n <- dim(individuals)
 
@@ -123,7 +123,7 @@ sym.interval.pc <- function(sym.data, method = c("vertex", "centers"), maxit, pl
             projection.matrix <- projection.matrix[, res.var.ind$var.order]
             correl <- cor(x = projection.matrix, y = vertex$vertex)
         } else if (method == "vertex") {
-            res <- principal.curve(individuals, plot.true = plot, maxit = maxit)
+            res <- principal_curve(individuals, plot.true = plot, maxit = maxit)
 
             res.var <- variance.princ.curve(data = individuals, curve = res$s)
 
