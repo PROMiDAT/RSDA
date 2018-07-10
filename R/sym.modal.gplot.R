@@ -14,6 +14,7 @@ sym.modal.gplot <- function(info, color=c("black"), border=FALSE, show.type = TR
       #se les agraga una columna extra en cero(representativa de los valores en cero)
       names <- c(names[select],"...")#Se seleccionan los nombres de columnas con valores distintos de cero y
       #se crea el nombre de la columna representativa
+      fill <- fill[select] # selecciona los colores corespondientes
     }
   }
 

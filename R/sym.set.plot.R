@@ -15,6 +15,7 @@ sym.set.plot <- function(info,col=c("blue"),border=FALSE,show.type = TRUE,reduce
       #se les agraga una columna extra en cero(representativa de los valores en cero)
       names <- c(names[select],"...")#Se seleccionan los nombres de columnas con valores distintos de cero y
       #se crea el nombre de la columna representativa
+      col <- col[select] # selecciona los colores corespondientes
     }
   }
 
