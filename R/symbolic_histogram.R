@@ -18,7 +18,9 @@ new_sym_histogram <- function(x = double()){
         }
         ,vectorize.args = c("x","y")),
       length = length(x),
-      breaks = hist(x,plot = F)$breaks
+      min_value = min(x),
+      max_value = max(x),
+      breaks = hist(x, plot = F)$breaks
     )
   ),class = "symbolic_histogram")
 }

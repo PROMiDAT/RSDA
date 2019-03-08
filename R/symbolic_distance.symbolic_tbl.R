@@ -2,7 +2,6 @@
 #' @rdname symbolic_dist
 #' @param x a symbolic vector or a symbolic_tbl
 #' @param y a symbolic vector
-#' @param .f function to compute distances
 #' @param alpha \itemize{
 #'   \item For alpha = 1, city-block distance
 #'   \item For alpha = 2, euclidean distance
@@ -15,7 +14,7 @@ symbolic_dist <- function(x,...) UseMethod("symbolic_dist")
 
 #' @rdname symbolic_dist
 #' @rawNamespace S3method(symbolic_dist, symbolic_tbl)
-symbolic_dist.symbolic_tbl <- function(x = NULL, .f = symbolic_dist, alpha = 2, w = 1, parallel = F) {
+symbolic_dist.symbolic_tbl <- function(x = NULL, alpha = 2, w = 1, parallel = F) {
 
   colnames(x) <- make.names(colnames(x), unique = T)
   names <- x$concept
@@ -31,7 +30,7 @@ symbolic_dist.symbolic_tbl <- function(x = NULL, .f = symbolic_dist, alpha = 2, 
     future::plan(strategy = future::sequential)
   }
 
-  distances <- furrr::future_map(x, ~.f(x = .[p$a], y = .[p$b]))
+  distances <- furrr::future_map(x, ~simbolic_distance(x = .[p$a], y = .[p$b]))
   distances <- purrr::reduce(distances, function(x, y) w*(x^alpha + y^alpha)^(1/alpha))
 
   for (i in seq_len(nrow(p))) {
