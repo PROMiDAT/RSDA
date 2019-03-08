@@ -2,7 +2,7 @@
 #' @importFrom vctrs vec_assert new_vctr
 #' @keywords internal
 #'
-new_modal <- function(x = character()) {
+new_sym_modal <- function(x = character()) {
   vctrs::vec_assert(x, character())
   vctrs::new_vctr(list(factor(x)), class = "symbolic_modal")
 }
@@ -18,9 +18,9 @@ new_modal <- function(x = character()) {
 #' modal(c("a","b","b","l"))
 #' @importFrom vctrs vec_cast
 #'
-modal <- function(x = character()){
+sym_modal <- function(x = character()){
   x <- vctrs::vec_cast(x, character())
-  new_modal(x)
+  new_sym_modal(x)
 }
 
 #' Symbolic modal
@@ -33,7 +33,7 @@ modal <- function(x = character()){
 #' x <- modal(c("a","b","b","l"))
 #' is_modal(x)
 #' @export
-is_modal <- function(x){
+is_sym_modal <- function(x){
   inherits(x, "symbolic_modal")
 }
 

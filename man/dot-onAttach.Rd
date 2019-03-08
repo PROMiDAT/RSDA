@@ -4,7 +4,7 @@
 \alias{.onAttach}
 \title{onAttach}
 \usage{
-.onAttach(libname, pkgname)
+.onAttach(...)
 }
 \description{
 onAttach

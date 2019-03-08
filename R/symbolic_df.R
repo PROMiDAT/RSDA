@@ -29,11 +29,11 @@ check_quo_duplicated_names <- function(x){
 #' @importFrom forcats fct_unify
 #' @importFrom tibble tibble
 #' @export
-symbolic_df <- function(x = NULL,
+classic_to_sym <- function(x = NULL,
                         concept = NULL,
                         variables = tidyselect::everything(),
-                        .default_numeric = interval,
-                        .default_categorical = set,
+                        .default_numeric = sym_interval,
+                        .default_categorical = sym_modal,
                         ...){
   concept. <- tidyselect::vars_select(colnames(x), !!enquo(concept))
   col.types <- rlang::quos(...)
@@ -57,14 +57,14 @@ symbolic_df <- function(x = NULL,
 
   out <- dplyr::left_join(out1, out2, by = concept.) %>%
     dplyr::ungroup()
-  fct_unify_set. <- purrr::compose(function(x) vec_cast(x, new_set()),
-                                   forcats::fct_unify)
-  fct_unify_modal. <- purrr::compose(function(x) vec_cast(x, new_modal()),
+
+  fct_unify_modal. <- purrr::compose(function(x) vec_cast(x, new_sym_modal()),
                                      forcats::fct_unify)
 
-  out <- dplyr::mutate_if(out,is_set, fct_unify_set.)
-  out <- dplyr::mutate_if(out,is_modal, fct_unify_modal.)
-  out <- dplyr::mutate(out, concept = apply(out[,concept.],1,function(x) paste0(x, collapse = ":"))) %>%
-    dplyr::select(concept, tidyselect::everything(),-concept.)
+  out <- dplyr::mutate_if(out,is_sym_modal, fct_unify_modal.)
+  out <- dplyr::mutate(out, concept = apply(out[,concept.],1, function(x) paste0(x, collapse = ":"))) %>%
+    dplyr::select(concept, tidyselect::everything(), -concept.)
+  class(out) <- c("symbolic_tbl", class(out))
+
   return(out)
 }

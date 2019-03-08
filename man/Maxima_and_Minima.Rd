@@ -3,11 +3,17 @@
 \name{min.symbolic_interval}
 \alias{min.symbolic_interval}
 \alias{max.symbolic_interval}
+\alias{max_interval}
+\alias{min_interval}
 \title{Maxima and Minima}
 \usage{
 \method{min}{symbolic_interval}(x, ...)
 
 \method{max}{symbolic_interval}(x, ...)
+
+max_interval(x)
+
+min_interval(x)
 }
 \arguments{
 \item{x}{symbolic interval vector}

@@ -5,7 +5,7 @@
 #' @importFrom stats ecdf
 #' @keywords internal
 #'
-new_histogram <- function(x = double()){
+new_sym_histogram <- function(x = double()){
   vctrs::vec_assert(x, numeric())
   .f <- stats::ecdf(x)
   new_vctr(list(
@@ -35,9 +35,9 @@ new_histogram <- function(x = double()){
 #' histogram(iris$Sepal.Length)
 #' @importFrom vctrs vec_cast
 #'
-histogram <- function(x = double()){
+sym_histogram <- function(x = double()){
   x <- vec_cast(x, double())
-  new_histogram(x)
+  new_sym_histogram(x)
 }
 
 #' Symbolic histogram
@@ -50,7 +50,7 @@ histogram <- function(x = double()){
 #' x <- histogram(iris$Sepal.Length)
 #' is_histogram(x)
 #' @export
-is_histogram <- function(x){
+is_sym_histogram <- function(x){
   inherits(x, "symbolic_histogram")
 }
 
@@ -98,7 +98,7 @@ gplot <- function(x, ...) UseMethod("gplot")
 #' @return a ggplot object
 #' @importFrom dplyr lag lead
 #' @importFrom scales comma
-#' @import ggplot2
+#' @importFrom ggplot2 ggplot aes geom_col labs theme_minimal theme element_text
 #' @rawNamespace S3method(gplot, symbolic_histogram)
 #' @examples
 #' h <- histogram(iris$Sepal.Length)

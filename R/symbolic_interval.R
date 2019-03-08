@@ -2,7 +2,7 @@
 #' @importFrom vctrs vec_assert new_vctr
 #' @keywords internal
 #'
-new_intreval <- function(min = numeric(), max = numeric()) {
+new_sym_intreval <- function(min = numeric(), max = numeric()) {
   vctrs::vec_assert(min, numeric())
   vctrs::vec_assert(max, numeric())
   vctrs::new_vctr(complex(real = min, imaginary = max), class = "symbolic_interval")
@@ -22,9 +22,9 @@ new_intreval <- function(min = numeric(), max = numeric()) {
 #' interval(1:10)
 #' @importFrom vctrs vec_cast
 #'
-interval <- function(x = double(), .min = min, .max = max){
+sym_interval <- function(x = double(), .min = min, .max = max){
   x <- vctrs::vec_cast(x, double())
-  new_intreval(min = .min(x), max = .max(x))
+  new_sym_intreval(min = .min(x), max = .max(x))
 }
 
 
@@ -39,7 +39,7 @@ interval <- function(x = double(), .min = min, .max = max){
 #' is_interval(x)
 #' is_interval("d")
 #' @export
-is_interval <- function(x){
+is_sym_interval <- function(x){
   inherits(x,"symbolic_interval")
 }
 
@@ -81,14 +81,37 @@ format.symbolic_interval <- function(x, ...) {
 #' @export
 #' @importFrom vctrs vec_data
 min.symbolic_interval <- function(x, ...) {
-  new_intreval(min(vctrs::vec_data(Re(x))),min(vctrs::vec_data(Im(x))))
+  if(length(x) == 1) {
+    return(Re(vctrs::vec_data(x)))
+  }
+  min(Re(vctrs::vec_data(x)))
 }
 
 #' @rdname Maxima_and_Minima
 #' @export
 max.symbolic_interval <- function(x, ...) {
-  new_intreval(max(Re(vec_data(x))), max(Im(vec_data(x))))
+  if(length(x) == 1) {
+    return(Im(vctrs::vec_data(x)))
+  }
+  max(Im(vctrs::vec_data(x)))
 }
+
+#' @rdname Maxima_and_Minima
+#' @export
+max_interval <- function(x) {
+  new_sym_intreval(max(Re(vec_data(x))), max(Im(vec_data(x))))
+}
+#' @rdname Maxima_and_Minima
+#' @export
+min_interval <- function(x) {
+  new_sym_intreval(min(Re(vec_data(x))), max(Im(vec_data(x))))
+}
+#' @export
+#' @keywords internal
+`%overlap%` <- function(x, y) {
+  return(!(max(x) < min(y) | min(x) > max(y)))
+}
+
 
 #' Symbolic interval mean
 #'

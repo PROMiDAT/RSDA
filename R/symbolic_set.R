@@ -2,9 +2,9 @@
 #' @importFrom vctrs vec_assert new_vctr
 #' @keywords internal
 #'
-new_set <- function(x = character()) {
+new_sym_set <- function(x = character()) {
   vctrs::vec_assert(x, character())
-  vctrs::new_vctr(list(factor(x)), class = "symbolic_set")
+  vctrs::new_vctr(list(unique(x)), class = "symbolic_set")
 }
 
 #' Create an symbolic_set type object
@@ -18,9 +18,9 @@ new_set <- function(x = character()) {
 #' set(c("a","b","b","l"))
 #' @importFrom vctrs vec_cast
 #'
-set <- function(x = character()){
+sym_set <- function(x = character()){
   x <- vctrs::vec_cast(x, character())
-  new_set(x)
+  new_sym_set(x)
 }
 
 #' Symbolic set
@@ -31,9 +31,9 @@ set <- function(x = character()){
 #'
 #' @examples
 #' x <- set(c("a","b","b","l"))
-#' is_set(x)
+#' is_sym_set(x)
 #' @export
-is_set <- function(x){
+is_sym_set <- function(x){
   inherits(x, "symbolic_set")
 }
 
