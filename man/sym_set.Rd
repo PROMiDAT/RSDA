@@ -16,5 +16,5 @@ a symbolic set
 Create an symbolic_set type object
 }
 \examples{
-set(c("a","b","b","l"))
+sym_set(c("a","b","b","l"))
 }

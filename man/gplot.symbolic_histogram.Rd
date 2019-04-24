@@ -23,7 +23,7 @@ a ggplot object
 Create a complete ggplot for symbolic histograms
 }
 \examples{
-h <- histogram(iris$Sepal.Length)
+h <- sym_histogram(iris$Sepal.Length)
 gplot(h)
 
 }

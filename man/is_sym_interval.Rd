@@ -16,7 +16,7 @@ returns TRUE if its argument's value is a symbolic_vector and FALSE otherwise.
 Symbolic interval
 }
 \examples{
-x <- interval(1:10)
-is_interval(x)
-is_interval("d")
+x <- sym_interval(1:10)
+is_sym_interval(x)
+is_sym_interval("d")
 }

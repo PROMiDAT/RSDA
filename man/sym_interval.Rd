@@ -20,6 +20,6 @@ a symbolic interval
 Create an symbolic_interval type object
 }
 \examples{
-interval(c(1,2,4,5))
-interval(1:10)
+sym_interval(c(1,2,4,5))
+sym_interval(1:10)
 }

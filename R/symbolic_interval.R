@@ -18,8 +18,8 @@ new_sym_intreval <- function(min = numeric(), max = numeric()) {
 #' @export
 #'
 #' @examples
-#' interval(c(1,2,4,5))
-#' interval(1:10)
+#' sym_interval(c(1,2,4,5))
+#' sym_interval(1:10)
 #' @importFrom vctrs vec_cast
 #'
 sym_interval <- function(x = double(), .min = min, .max = max){
@@ -35,9 +35,9 @@ sym_interval <- function(x = double(), .min = min, .max = max){
 #' @return returns TRUE if its argument's value is a symbolic_vector and FALSE otherwise.
 #'
 #' @examples
-#' x <- interval(1:10)
-#' is_interval(x)
-#' is_interval("d")
+#' x <- sym_interval(1:10)
+#' is_sym_interval(x)
+#' is_sym_interval("d")
 #' @export
 is_sym_interval <- function(x){
   inherits(x,"symbolic_interval")
@@ -106,10 +106,11 @@ max_interval <- function(x) {
 min_interval <- function(x) {
   new_sym_intreval(min(Re(vec_data(x))), max(Im(vec_data(x))))
 }
+
+#' @rdname Maxima_and_Minima
 #' @export
-#' @keywords internal
-`%overlap%` <- function(x, y) {
-  return(!(max(x) < min(y) | min(x) > max(y)))
+center_interval <- function(x) {
+  (Re(vec_data(x)) + Im(vec_data(x)))/2
 }
 
 
@@ -121,7 +122,7 @@ min_interval <- function(x) {
 #' @importFrom vctrs vec_data
 #'
 mean.symbolic_interval <- function(x, ...) {
-  new_intreval(mean(vctrs::vec_data(Re(x))), mean(vctrs::vec_data(Im(x))))
+  new_sym_intreval(mean(vctrs::vec_data(Re(x))), mean(vctrs::vec_data(Im(x))))
 }
 
 #' Symbolic interval median
@@ -133,7 +134,7 @@ mean.symbolic_interval <- function(x, ...) {
 #' @importFrom stats median
 #'
 median.symbolic_interval <- function(x, ...) {
-  new_intreval(stats::median(vctrs::vec_data(Re(x))), stats::median(vctrs::vec_data(Im(x))))
+  new_sym_intreval(stats::median(vctrs::vec_data(Re(x))), stats::median(vctrs::vec_data(Im(x))))
 }
 
 #' Symbolic interval SD
@@ -153,7 +154,7 @@ sd.default <- function(x,...) stats::var(x,...)
 #' @rdname Symbolic_interval_sd
 #' @rawNamespace S3method(sd, symbolic_interval)
 sd.symbolic_interval <- function(x, ...) {
-  new_intreval(stats::sd(vctrs::vec_data(Re(x))), stats::sd(vctrs::vec_data(Im(x))))
+  new_sym_intreval(stats::sd(vctrs::vec_data(Re(x))), stats::sd(vctrs::vec_data(Im(x))))
 }
 
 #' Symbolic interval variance
@@ -169,7 +170,7 @@ var.default <- function(x,...) stats::var(x,...)
 
 #' @rawNamespace S3method(var, symbolic_interval)
 var.symbolic_interval <- function(x, ...) {
-  new_intreval(var(vctrs::vec_data(Re(x))), var(vctrs::vec_data(Im(x))))
+  new_sym_intreval(var(vctrs::vec_data(Re(x))), var(vctrs::vec_data(Im(x))))
 }
 
 

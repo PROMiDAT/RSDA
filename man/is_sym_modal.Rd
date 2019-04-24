@@ -16,6 +16,6 @@ returns TRUE if its argument's value is a symbolic_modal and FALSE otherwise.
 Symbolic modal
 }
 \examples{
-x <- modal(c("a","b","b","l"))
-is_modal(x)
+x <- sym_modal(c("a","b","b","l"))
+is_sym_modal(x)
 }

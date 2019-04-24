@@ -65,6 +65,6 @@ classic_to_sym <- function(x = NULL,
   out <- dplyr::mutate(out, concept = apply(out[,concept.],1, function(x) paste0(x, collapse = ":"))) %>%
     dplyr::select(concept, tidyselect::everything(), -concept.)
   class(out) <- c("symbolic_tbl", class(out))
-
+  attr(out,"concept") <- concept.
   return(out)
 }

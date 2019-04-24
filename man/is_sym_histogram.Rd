@@ -16,6 +16,6 @@ returns TRUE if its argument's value is a symbolic_histogram and FALSE otherwise
 Symbolic histogram
 }
 \examples{
-x <- histogram(iris$Sepal.Length)
-is_histogram(x)
+x <- sym_histogram(iris$Sepal.Length)
+is_sym_histogram(x)
 }

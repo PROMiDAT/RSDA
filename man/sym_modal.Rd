@@ -16,5 +16,5 @@ a symbolic modal
 Create an symbolic_modal type object
 }
 \examples{
-modal(c("a","b","b","l"))
+sym_modal(c("a","b","b","l"))
 }

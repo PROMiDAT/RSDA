@@ -18,8 +18,8 @@ new_sym_histogram <- function(x = double()){
         }
         ,vectorize.args = c("x","y")),
       length = length(x),
-      min_value = min(x),
-      max_value = max(x),
+      min = min(x),
+      max = max(x),
       breaks = hist(x, plot = F)$breaks
     )
   ),class = "symbolic_histogram")
@@ -34,7 +34,7 @@ new_sym_histogram <- function(x = double()){
 #' @export
 #'
 #' @examples
-#' histogram(iris$Sepal.Length)
+#' sym_histogram(iris$Sepal.Length)
 #' @importFrom vctrs vec_cast
 #'
 sym_histogram <- function(x = double()){
@@ -49,8 +49,8 @@ sym_histogram <- function(x = double()){
 #' @return returns TRUE if its argument's value is a symbolic_histogram and FALSE otherwise.
 #'
 #' @examples
-#' x <- histogram(iris$Sepal.Length)
-#' is_histogram(x)
+#' x <- sym_histogram(iris$Sepal.Length)
+#' is_sym_histogram(x)
 #' @export
 is_sym_histogram <- function(x){
   inherits(x, "symbolic_histogram")
@@ -103,7 +103,7 @@ gplot <- function(x, ...) UseMethod("gplot")
 #' @importFrom ggplot2 ggplot aes geom_col labs theme_minimal theme element_text
 #' @rawNamespace S3method(gplot, symbolic_histogram)
 #' @examples
-#' h <- histogram(iris$Sepal.Length)
+#' h <- sym_histogram(iris$Sepal.Length)
 #' gplot(h)
 #'
 gplot.symbolic_histogram <- function(x, probability = T, breaks = NA_real_, ...) {

@@ -15,7 +15,7 @@ new_sym_set <- function(x = character()) {
 #' @export
 #'
 #' @examples
-#' set(c("a","b","b","l"))
+#' sym_set(c("a","b","b","l"))
 #' @importFrom vctrs vec_cast
 #'
 sym_set <- function(x = character()){
@@ -30,7 +30,7 @@ sym_set <- function(x = character()){
 #' @return returns TRUE if its argument's value is a symbolic_set and FALSE otherwise.
 #'
 #' @examples
-#' x <- set(c("a","b","b","l"))
+#' x <- sym_set(c("a","b","b","l"))
 #' is_sym_set(x)
 #' @export
 is_sym_set <- function(x){

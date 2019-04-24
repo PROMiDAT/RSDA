@@ -28,4 +28,6 @@ Imports:
     purrr,
     magrittr,
     tidyselect,
-    tibble
+    tibble,
+    future,
+    furrr

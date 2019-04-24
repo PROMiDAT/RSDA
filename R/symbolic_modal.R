@@ -15,7 +15,7 @@ new_sym_modal <- function(x = character()) {
 #' @export
 #'
 #' @examples
-#' modal(c("a","b","b","l"))
+#' sym_modal(c("a","b","b","l"))
 #' @importFrom vctrs vec_cast
 #'
 sym_modal <- function(x = character()){
@@ -30,8 +30,8 @@ sym_modal <- function(x = character()){
 #' @return returns TRUE if its argument's value is a symbolic_modal and FALSE otherwise.
 #'
 #' @examples
-#' x <- modal(c("a","b","b","l"))
-#' is_modal(x)
+#' x <- sym_modal(c("a","b","b","l"))
+#' is_sym_modal(x)
 #' @export
 is_sym_modal <- function(x){
   inherits(x, "symbolic_modal")

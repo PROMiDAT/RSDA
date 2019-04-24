@@ -8,13 +8,17 @@
 #'   \item For alpha = ∞ , Chebychev distence
 #' }
 #' @param  w Weight
+#' @param ... s3
 #' @param parallel If False the future strategy ir sequential, otherwise is multiprocess
+#' @importFrom stats as.dist
+#' @importFrom future plan multiprocess
+#' @importFrom furrr future_map
 #' @export  symbolic_dist
 symbolic_dist <- function(x,...) UseMethod("symbolic_dist")
 
 #' @rdname symbolic_dist
 #' @rawNamespace S3method(symbolic_dist, symbolic_tbl)
-symbolic_dist.symbolic_tbl <- function(x = NULL, alpha = 2, w = 1, parallel = F) {
+symbolic_dist.symbolic_tbl <- function(x = NULL, alpha = 2, w = 1, parallel = F, ...) {
 
   colnames(x) <- make.names(colnames(x), unique = T)
   names <- x$concept
@@ -30,7 +34,7 @@ symbolic_dist.symbolic_tbl <- function(x = NULL, alpha = 2, w = 1, parallel = F)
     future::plan(strategy = future::sequential)
   }
 
-  distances <- furrr::future_map(x, ~simbolic_distance(x = .[p$a], y = .[p$b]))
+  distances <- furrr::future_map(x, ~symbolic_dist(x = .[p$a], y = .[p$b]))
   distances <- purrr::reduce(distances, function(x, y) w*(x^alpha + y^alpha)^(1/alpha))
 
   for (i in seq_len(nrow(p))) {
@@ -38,5 +42,5 @@ symbolic_dist.symbolic_tbl <- function(x = NULL, alpha = 2, w = 1, parallel = F)
   }
   rownames(out) <- names
   colnames(out) <- names
-  return(as.dist(out))
+  return(stats::as.dist(out))
 }

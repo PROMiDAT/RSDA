@@ -2,5 +2,5 @@
 #' @keywords internal
 #' @export
 .onAttach <- function(...) {
-  cat("Welcome to my package")
+  packageStartupMessage("Welcome to my package")
 }

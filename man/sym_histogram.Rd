@@ -16,5 +16,5 @@ a symbolic histogram
 Create an symbolic_histogram type object
 }
 \examples{
-histogram(iris$Sepal.Length)
+sym_histogram(iris$Sepal.Length)
 }

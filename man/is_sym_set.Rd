@@ -16,6 +16,6 @@ returns TRUE if its argument's value is a symbolic_set and FALSE otherwise.
 Symbolic set
 }
 \examples{
-x <- set(c("a","b","b","l"))
+x <- sym_set(c("a","b","b","l"))
 is_sym_set(x)
 }
