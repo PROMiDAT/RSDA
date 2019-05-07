@@ -162,7 +162,7 @@ RSDAPlus::sym.radar.plot(new_x)
 RSDAPlus::sym.interval.pca(new_x, method = "classic")
 res <- RSDAPlus::sym.interval.pca(new_x, method = "tops")
 RSDAPlus::sym.scatterplot(res$Sym.Components[,1],res$Sym.Components[,2],
-                labels=TRUE,col='red',main='PCA Vertex - Oil Data')
+                labels=TRUE,col='red', main='iris')
 
 RSDAPlus::sym.circle.plot(res$Sym.Prin.Correlations)
 RSDAPlus::sym.hclust(new_x)

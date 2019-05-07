@@ -3,8 +3,11 @@
 #' @keywords internal
 #'
 new_sym_modal <- function(x = character()) {
-  vctrs::vec_assert(x, character())
-  vctrs::new_vctr(list(factor(x)), class = "symbolic_modal")
+  out <- list()
+  out$cats <- levels(x)
+  out$probs <- as.numeric(prop.table(table(x)))
+  out$n <- as.numeric(table(x))
+  vctrs::new_vctr(list(out), class = "symbolic_modal")
 }
 
 #' Create an symbolic_modal type object
@@ -19,7 +22,7 @@ new_sym_modal <- function(x = character()) {
 #' @importFrom vctrs vec_cast
 #'
 sym_modal <- function(x = character()){
-  x <- vctrs::vec_cast(x, character())
+  x <- vctrs::vec_cast(x, factor())
   new_sym_modal(x)
 }
 
@@ -59,13 +62,12 @@ vec_ptype_full.symbolic_modal <- function(x) {
 #' @export
 #' @importFrom  stringr str_trunc
 format.symbolic_modal <- function(x, ...) {
-  out <- vector(mode = "character",length = length(x))
+  out <- vector(mode = "character", length = length(x))
   for (i in seq_along(x)) {
-    p <- prop.table(table(x[[i]]))
-    out[i] <- stringr::str_trunc(paste0(paste0(abbreviate(names(p),minlength = 2),":",
-                                               round(p,2)),
-                                        collapse = " "),
-                                 width = 20, ellipsis = "...")
+    cats <- abbreviate(x[[i]]$cats,3)
+    probs <- x[[i]]$probs
+    text <- paste0(stringr::str_trunc(paste0(cats,":",probs),width = 20, ellipsis = "..."),collapse = " ")
+    out[i] <- text
   }
   out
 }

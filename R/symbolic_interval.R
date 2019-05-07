@@ -81,18 +81,12 @@ format.symbolic_interval <- function(x, ...) {
 #' @export
 #' @importFrom vctrs vec_data
 min.symbolic_interval <- function(x, ...) {
-  if(length(x) == 1) {
-    return(Re(vctrs::vec_data(x)))
-  }
   min(Re(vctrs::vec_data(x)))
 }
 
 #' @rdname Maxima_and_Minima
 #' @export
 max.symbolic_interval <- function(x, ...) {
-  if(length(x) == 1) {
-    return(Im(vctrs::vec_data(x)))
-  }
   max(Im(vctrs::vec_data(x)))
 }
 
@@ -111,6 +105,15 @@ min_interval <- function(x) {
 #' @export
 center_interval <- function(x) {
   (Re(vec_data(x)) + Im(vec_data(x)))/2
+}
+#' @rdname Maxima_and_Minima
+#' @export
+`$.symbolic_interval` <- function(x, name = c("min","max")){
+  if(name == "min"){
+    min(x)
+  }else if(name == "max") {
+    max(x)
+  }
 }
 
 
@@ -172,5 +175,7 @@ var.default <- function(x,...) stats::var(x,...)
 var.symbolic_interval <- function(x, ...) {
   new_sym_intreval(var(vctrs::vec_data(Re(x))), var(vctrs::vec_data(Im(x))))
 }
+
+
 
 

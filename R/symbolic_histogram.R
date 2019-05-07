@@ -7,20 +7,20 @@
 #'
 new_sym_histogram <- function(x = double()){
   vctrs::vec_assert(x, numeric())
-  .f <- stats::ecdf(x)
+  h <- hist(x, plot = F)
+  breaks <- h$breaks
+  c1 <- stats::na.omit(dplyr::lag(breaks))
+  c2 <- stats::na.omit(dplyr::lead(breaks))
+  cats <- paste0("[",scales::comma(c1, accuracy = 0.1)," : ",scales::comma(c2, accuracy = 0.1), "]")
+  cats <- factor(cats,levels = cats, ordered = T)
+
   new_vctr(list(
     list(
-      f = Vectorize(
-        function(x = NA_real_, y = NA_real_){
-          if(is.na(x)) rlang::abort("Error: `x` must be <dbl>, not <NA>.")
-          if(is.na(y)) return(.f(x))
-          return(.f(y)-.f(x))
-        }
-        ,vectorize.args = c("x","y")),
+      probs = h$counts/length(x),
       length = length(x),
       min = min(x),
       max = max(x),
-      breaks = hist(x, plot = F)$breaks
+      breaks = cats
     )
   ),class = "symbolic_histogram")
 }
@@ -106,24 +106,13 @@ gplot <- function(x, ...) UseMethod("gplot")
 #' h <- sym_histogram(iris$Sepal.Length)
 #' gplot(h)
 #'
-gplot.symbolic_histogram <- function(x, probability = T, breaks = NA_real_, ...) {
-  if(any(is.na(breaks))) {
-    breaks <- x[[1]]$breaks
-  }
-  c1 <- stats::na.omit(dplyr::lag(breaks))
-  c2 <- stats::na.omit(dplyr::lead(breaks))
-  cats <- paste0("[",scales::comma(c1, accuracy = 0.1)," : ",scales::comma(c2, accuracy = 0.1), "]")
-  cats <- factor(cats,levels = cats,ordered = T)
-  probs <- x[[1]]$f(c1,c2)
-  if(!probability) {
-    probs <- probs * x[[1]]$length
-  }
-
-  ggplot(data = data.frame(probs, cats),
+gplot.symbolic_histogram <- function(x) {
+  df <- data.frame(cats = x[[1]]$breaks, probs = x[[1]]$probs)
+  ggplot(data =df,
          mapping = aes(x = cats, y = probs)) +
     geom_col(width = 1, color = "white") +
     labs(x = "",
-         y = ifelse(probability,"Probability","Counts"),
+         y = "Probability",
          caption = "Powerd by : RSDA ") +
     theme_minimal() +
     theme(plot.title = element_text(hjust = .5))
