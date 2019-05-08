@@ -4,8 +4,7 @@
 \alias{gplot.symbolic_histogram}
 \title{Create a complete ggplot for symbolic histograms}
 \usage{
-\method{gplot}{symbolic_histogram}(x, probability = T,
-  breaks = NA_real_, ...)
+\method{gplot}{symbolic_histogram}(x)
 }
 \arguments{
 \item{x}{A symbolic histogram}

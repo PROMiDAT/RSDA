@@ -4,7 +4,7 @@
 #'
 new_sym_set <- function(x = character()) {
   vctrs::vec_assert(x, character())
-  vctrs::new_vctr(list(unique(x)), class = "symbolic_set")
+  vctrs::new_vctr(list(factor(unique(x))), class = "symbolic_set")
 }
 
 #' Create an symbolic_set type object
@@ -61,9 +61,37 @@ vec_ptype_full.symbolic_set <- function(x) {
 format.symbolic_set <- function(x, ...) {
   out <- vector(mode = "character",length = length(x))
   for (i in seq_along(x)) {
-    out[i] <- paste0("{",
-                     stringr::str_trunc(paste0(sort(unique(as.character(x[[i]]))), collapse = ","),
-                                        width = 15, ellipsis = "..."),"}")
+    cats <- levels(x[[i]])
+    text <- paste0(cats, collapse = ",")
+    text <- stringr::str_trunc(text,width = 30,ellipsis = "...")
+    text <- paste0("{",text,"}")
+    out[i] <- text
   }
   out
+}
+
+
+#' $ operator for set
+#'
+#' @param x .....
+#' @param name ...
+#' @export
+`$.symbolic_set` <- function(x, name = c("levels","values")){
+  switch(name,
+         levels = {
+           if(length(x) == 1){
+             return(levels(x[[1]]))
+           }else {
+             return(lapply(x, levels))
+           }
+         },
+         values = {
+           if(length(x) == 1){
+             return(table(x[[1]]))
+           }else {
+             return(lapply(x, table))
+           }
+         },
+         NULL
+  )
 }

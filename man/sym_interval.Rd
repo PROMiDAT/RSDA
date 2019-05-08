@@ -4,7 +4,7 @@
 \alias{sym_interval}
 \title{Create an symbolic_interval type object}
 \usage{
-sym_interval(x = double(), .min = min, .max = max)
+sym_interval(x = numeric(), .min = min, .max = max)
 }
 \arguments{
 \item{x}{numeric vector}

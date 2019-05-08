@@ -5,6 +5,8 @@
 \alias{max.symbolic_interval}
 \alias{max_interval}
 \alias{min_interval}
+\alias{center_interval}
+\alias{$.symbolic_interval}
 \title{Maxima and Minima}
 \usage{
 \method{min}{symbolic_interval}(x, ...)
@@ -14,6 +16,11 @@
 max_interval(x)
 
 min_interval(x)
+
+center_interval(x)
+
+\method{$}{symbolic_interval}(x, name = c("min", "max", "mean",
+  "median"))
 }
 \arguments{
 \item{x}{symbolic interval vector}

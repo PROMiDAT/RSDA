@@ -22,8 +22,8 @@ new_sym_intreval <- function(min = numeric(), max = numeric()) {
 #' sym_interval(1:10)
 #' @importFrom vctrs vec_cast
 #'
-sym_interval <- function(x = double(), .min = min, .max = max){
-  x <- vctrs::vec_cast(x, double())
+sym_interval <- function(x = numeric(), .min = min, .max = max){
+  x <- vctrs::vec_cast(x, numeric())
   new_sym_intreval(min = .min(x), max = .max(x))
 }
 
@@ -108,12 +108,14 @@ center_interval <- function(x) {
 }
 #' @rdname Maxima_and_Minima
 #' @export
-`$.symbolic_interval` <- function(x, name = c("min","max")){
-  if(name == "min"){
-    min(x)
-  }else if(name == "max") {
-    max(x)
-  }
+`$.symbolic_interval` <- function(x, name = c("min","max","mean","median")){
+  switch(name,
+    min = min(x),
+    max = max(x),
+    mean = mean(x),
+    median = median(x),
+    NULL
+)
 }
 
 
@@ -175,7 +177,3 @@ var.default <- function(x,...) stats::var(x,...)
 var.symbolic_interval <- function(x, ...) {
   new_sym_intreval(var(vctrs::vec_data(Re(x))), var(vctrs::vec_data(Im(x))))
 }
-
-
-
-

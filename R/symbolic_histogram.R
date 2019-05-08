@@ -7,22 +7,16 @@
 #'
 new_sym_histogram <- function(x = double()){
   vctrs::vec_assert(x, numeric())
-  h <- hist(x, plot = F)
+  h <- hist(x, plot = F,right = T)
   breaks <- h$breaks
-  c1 <- stats::na.omit(dplyr::lag(breaks))
-  c2 <- stats::na.omit(dplyr::lead(breaks))
-  cats <- paste0("[",scales::comma(c1, accuracy = 0.1)," : ",scales::comma(c2, accuracy = 0.1), "]")
-  cats <- factor(cats,levels = cats, ordered = T)
-
-  new_vctr(list(
-    list(
-      probs = h$counts/length(x),
-      length = length(x),
-      min = min(x),
-      max = max(x),
-      breaks = cats
-    )
-  ),class = "symbolic_histogram")
+  out <- list(
+    breaks = h$breaks,
+    props = h$counts/length(x),
+    counts = h$counts,
+    mean = mean(x),
+    sd = sd(x)
+  )
+  new_vctr(list(out), class = "symbolic_histogram")
 }
 
 
@@ -79,10 +73,13 @@ vec_ptype_full.symbolic_histogram <- function(x) {
 format.symbolic_histogram <- function(x, ...) {
   out <- vector(mode = "character",length = length(x))
   for (i in seq_along(x)) {
-    out[i] <- "<hist>"
+    mean. <- sprintf("%.2f",round(x[[i]]$mean,2))
+    sd. <- sprintf("%.2f",round(x[[i]]$sd,2))
+    out[i] <- stringr::str_glue("mean:{mean.} sd:{sd.}")
   }
   out
 }
+
 
 #' Symbolic object plot with ggplot2
 #' @param x a symbolic histogram
@@ -116,4 +113,17 @@ gplot.symbolic_histogram <- function(x) {
          caption = "Powerd by : RSDA ") +
     theme_minimal() +
     theme(plot.title = element_text(hjust = .5))
+}
+
+#' $ operator for histograms
+#'
+#' @param x .....
+#' @param name ...
+#' @export
+`$.symbolic_histogram` <- function(x, name){
+  if(length(x) == 1L){
+    return(x[[1]][[name]])
+  }else {
+    return(lapply(x, function(x) x[[name]]))
+  }
 }
