@@ -3,7 +3,10 @@
 #' @keywords internal
 #'
 new_sym_modal <- function(x = character()) {
-  vctrs::new_vctr(list(factor(x)), class = "symbolic_modal")
+  x <- prop.table(table(x))
+  out <- list(var = names(x),
+              prop = as.numeric(x))
+  vctrs::new_vctr(list(out), class = "symbolic_modal")
 }
 
 #' Create an symbolic_modal type object
@@ -18,7 +21,9 @@ new_sym_modal <- function(x = character()) {
 #' @importFrom vctrs vec_cast
 #'
 sym_modal <- function(x = character()){
-  x <- vctrs::vec_cast(x, character())
+  if(!class(x) == "factor"){
+    stop("To create a variable of modal type, the data must be of type factor.")
+  }
   new_sym_modal(x)
 }
 
@@ -60,9 +65,10 @@ vec_ptype_full.symbolic_modal <- function(x) {
 format.symbolic_modal <- function(x, ...) {
   out <- vector(mode = "character", length = length(x))
   for (i in seq_along(x)) {
-    cats <- abbreviate(levels(x[[i]]),3)
-    probs <- sprintf("%.2f",round(prop.table(table(x[[i]])),2))
-    text <- paste0(paste0(cats,":",probs),collapse = " ")
+
+    cats <- abbreviate(x[[i]]$var,3)
+    props <- sprintf("%.2f",round(x[[i]]$prop,2))
+    text <- paste0(paste0(cats, ":", props) ,collapse = " ")
     text <- stringr::str_trunc(text, width = 30, ellipsis = "...")
     out[i] <- text
   }
@@ -82,9 +88,9 @@ get_cats <- function(x,...) UseMethod("get_cats")
 #' @rawNamespace S3method(var, default)
 get_cats.symbolic_modal <- function(x, ...){
   if(length(x) == 1){
-    return(levels(x[[1]]))
+    return(x[[1]]$var)
   }else {
-    return(lapply(x, levels))
+    return(lapply(x, function(x) x$var))
   }
 }
 
@@ -100,33 +106,42 @@ get_props <- function(x,...) UseMethod("get_props")
 #' @rawNamespace S3method(var, default)
 get_props.symbolic_modal <- function(x, ...){
   if(length(x) == 1){
-    out <- prop.table(table(x[[1]]))
+    out <- x[[1]]$prop
     return(out)
   }else {
-    .f <- function(x) prop.table(table(x))
-    return(lapply(x,.f))
+    return(lapply(x, function(x) x$prop))
   }
 }
 
-#' Extract counts
+#' Extract values
 #'
 #' @param x An object to be converted
 #' @param ... Further arguments to be passed from or to other methods.
 #'
 #' @export
+#'
+as.data.frame.symbolic_modal <- function(x ,...){
+  out <- do.call("rbind", x$props)
+  colnames(out) <- unique(do.call("c",x$cats))
+  out <- as.data.frame(out)
+  return(out)
+}
 
-get_counts <- function(x,...) UseMethod("get_counts")
+#' Extract values2
+#'
+#' @param x An object to be converted
+#' @param ... Further arguments to be passed from or to other methods.
+#'
+#' @export
+#'
+#'
+get_data <- function(x,...) UseMethod("get_data")
+get_data.symbolic_moda <- function(x, ...){
+  for (i in seq_along(x)) {
 
-#' @rawNamespace S3method(var, default)
-get_counts.symbolic_modal <- function(x, ...){
-  if(length(x) == 1){
-    out <- table(x[[1]])
-    return(out)
-  }else {
-    .f <- function(x) table(x)
-    return(lapply(x,.f))
   }
 }
+
 #' $ operator for modals
 #'
 #' @param x .....
@@ -136,7 +151,6 @@ get_counts.symbolic_modal <- function(x, ...){
   switch(name,
          cats = get_cats(x),
          props = get_props(x),
-         counts = get_counts(x),
          NULL
   )
 }

@@ -51,6 +51,7 @@ classic_to_sym <- function(x = NULL,
     return(.default_categorical(x))
   }
 
+
   out2 <- x %>% dplyr::select(var.names) %>%
     dplyr::group_by(!!!dplyr::syms(concept.)) %>%
     dplyr::summarise_all(default_function)
@@ -61,7 +62,7 @@ classic_to_sym <- function(x = NULL,
   fct_unify_modal. <- purrr::compose(function(x) vec_cast(x, new_sym_modal()),
                                      forcats::fct_unify)
 
-  out <- dplyr::mutate_if(out,is_sym_modal, fct_unify_modal.)
+  #out <- dplyr::mutate_if(out,is_sym_modal, fct_unify_modal.)
   out <- dplyr::mutate(out, concept = apply(out[,concept.],1, function(x) paste0(x, collapse = ":"))) %>%
     dplyr::select(concept, tidyselect::everything(), -concept.)
   class(out) <- c("symbolic_tbl", class(out))

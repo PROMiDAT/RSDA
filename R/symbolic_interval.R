@@ -177,3 +177,17 @@ var.default <- function(x,...) stats::var(x,...)
 var.symbolic_interval <- function(x, ...) {
   new_sym_intreval(var(vctrs::vec_data(Re(x))), var(vctrs::vec_data(Im(x))))
 }
+
+
+#' convertir a data.frame
+#'
+#' @param x a symbolic interval vector
+#' @param ... further arguments passed to or from other methods.
+#' @export
+#'
+as.data.frame.symbolic_interval <- function(x, ...){
+  out <- lapply(x, function(x) data.frame(min = min(x), max = max(x)))
+  out <- do.call("rbind",out)
+  return(out)
+}
+#'

@@ -127,3 +127,14 @@ gplot.symbolic_histogram <- function(x) {
     return(lapply(x, function(x) x[[name]]))
   }
 }
+
+
+#' a data.frame
+#'
+#' @param x .....
+#' @param  ... ...
+#' @export
+#'
+as.data.frame.symbolic_histogram <- function(x, ...) {
+
+}
