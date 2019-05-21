@@ -127,20 +127,7 @@ as.data.frame.symbolic_modal <- function(x ,...){
   return(out)
 }
 
-#' Extract values2
-#'
-#' @param x An object to be converted
-#' @param ... Further arguments to be passed from or to other methods.
-#'
-#' @export
-#'
-#'
-get_data <- function(x,...) UseMethod("get_data")
-get_data.symbolic_moda <- function(x, ...){
-  for (i in seq_along(x)) {
 
-  }
-}
 
 #' $ operator for modals
 #'

@@ -1,0 +1,4 @@
+concept;$I;Sepal.Length.min;Sepal.Length.max;$H;[8 : 10];[10 : 12];[12 : 14];[14 : 16];$S;Azul;Amarillo;Verde
+Versicolor;$I;2;14;$H;0;1;0;0;$S;1;0;0
+Virginica;$I;42;46;$H;0.5;0.1;0.2;0.2;$S;0;1;1
+Setosa;$I;-8;15;$H;0.9;0.1;0;0;$S;1;0;0

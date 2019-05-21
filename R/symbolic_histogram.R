@@ -5,16 +5,13 @@
 #' @importFrom stats ecdf
 #' @keywords internal
 #'
-new_sym_histogram <- function(x = double()){
+new_sym_histogram <- function(x = double(), breaks = NA_real_){
   vctrs::vec_assert(x, numeric())
-  h <- hist(x, plot = F,right = T)
-  breaks <- h$breaks
+  a <- na.omit(dplyr::lead(breaks))
+  b <- na.omit(dplyr::lag(breaks))
   out <- list(
-    breaks = h$breaks,
-    props = h$counts/length(x),
-    counts = h$counts,
-    mean = mean(x),
-    sd = sd(x)
+    breaks = breaks,
+    props = sapply(seq_along(a), function(i) sum(x>=b[i] & x<a[i])/length(x))
   )
   new_vctr(list(out), class = "symbolic_histogram")
 }
@@ -31,9 +28,9 @@ new_sym_histogram <- function(x = double()){
 #' sym_histogram(iris$Sepal.Length)
 #' @importFrom vctrs vec_cast
 #'
-sym_histogram <- function(x = double()){
+sym_histogram <- function(x = double(), breaks = NA_real_){
   x <- vec_cast(x, double())
-  new_sym_histogram(x)
+  new_sym_histogram(x, breaks)
 }
 
 #' Symbolic histogram
@@ -73,9 +70,14 @@ vec_ptype_full.symbolic_histogram <- function(x) {
 format.symbolic_histogram <- function(x, ...) {
   out <- vector(mode = "character",length = length(x))
   for (i in seq_along(x)) {
-    mean. <- sprintf("%.2f",round(x[[i]]$mean,2))
-    sd. <- sprintf("%.2f",round(x[[i]]$sd,2))
-    out[i] <- stringr::str_glue("mean:{mean.} sd:{sd.}")
+    #mean. <- sprintf("%.2f",round(x[[i]]$mean,2))
+    #sd. <- sprintf("%.2f",round(x[[i]]$sd,2))
+    #out[i] <- stringr::str_glue("mean:{mean.} sd:{sd.}")
+
+    breaks <- x[[i]]$breaks
+    min. <- min(breaks)
+    max. <- max(breaks)
+    out[i] <- stringr::str_glue("breaks:{length(breaks)} min: {min.} max: {max.}")
   }
   out
 }
@@ -136,5 +138,12 @@ gplot.symbolic_histogram <- function(x) {
 #' @export
 #'
 as.data.frame.symbolic_histogram <- function(x, ...) {
+  df <- do.call("rbind", x$props)
+  df <- as.data.frame(df)
 
+  a <- na.omit(dplyr::lead(x$breaks[[1]]))
+  b <- na.omit(dplyr::lag(x$breaks[[1]]))
+
+  colnames(df) <- paste0("[",b," : ",a,"]")
+  df
 }

@@ -4,7 +4,7 @@
 \alias{sym_histogram}
 \title{Create an symbolic_histogram type object}
 \usage{
-sym_histogram(x = double())
+sym_histogram(x = double(), breaks = NA_real_)
 }
 \arguments{
 \item{x}{character vector}

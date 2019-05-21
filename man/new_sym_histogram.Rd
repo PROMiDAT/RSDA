@@ -4,7 +4,7 @@
 \alias{new_sym_histogram}
 \title{Create an symbolic_histogram type object}
 \usage{
-new_sym_histogram(x = double())
+new_sym_histogram(x = double(), breaks = NA_real_)
 }
 \description{
 Create an symbolic_histogram type object
