@@ -1,5 +1,0 @@
-dathome                 Simple polygon data
-gardenstate             Province polygons with inland waters as holes.
-geom_polypath           Geom polypath, a polygon filled path that can
-                        include holes.
-ggpolypath              ggpolypath.
