@@ -1,0 +1,105 @@
+$.symbolic_histogram    $ operator for histograms
+$.symbolic_modal        $ operator for modals
+$.symbolic_set          $ operator for set
+Cardiological           Cardiological data example
+R2.L                    Lower boundary correlation coefficient.
+R2.U                    Upper boundary correlation coefficient.
+RMSE.L                  Lower boundary root-mean-square error
+RMSE.U                  Upper boundary root-mean-square error
+RSDA                    R to Symbolic Data Analysis
+SDS.to.RSDA             SDS SODAS files to RSDA files.
+SODAS.to.RSDA           XML SODAS files to RSDA files.
+USCrime                 Us crime classic data table
+VeterinaryData          Symbolic interval data example
+abalone                 SODAS XML data file.
+as.data.frame.symbolic_histogram
+                        a data.frame
+as.data.frame.symbolic_interval
+                        convertir a data.frame
+as.data.frame.symbolic_modal
+                        Extract values
+as.data.frame.symbolic_set
+                        convertir a data.frame
+calc.burt.sym           Burt Matrix
+centers.interval        Compute centers of the interval
+classic.to.sym          Generate a symbolic data frame
+cor                     Generic function for the correlation
+cov                     Generic function for the covariance
+deter.coefficient       Compute the determination cosfficient
+dist.vect               Compute a distance vector
+dist.vect.matrix        Compute the distance vector matrix
+ex1_db2so               Data example to generate symbolic objets
+ex_cfa1                 Correspondence Analysis Example
+ex_cfa2                 Correspondence Analysis Example
+ex_mcfa1                Multiple Correspondence Analysis Example
+ex_mcfa2                Multiple Correspondence Analysis Example
+example1                Data Example 1
+example2                Data Example 2
+example3                Data Example 3
+example4                Data Example 4
+example5                Data Example 5
+example6                Data Example 6
+example7                Data Example 7
+facedata                Face Data Example
+format.symbolic_histogram
+                        Symbolic modal conversion functions to and from
+                        Character
+format.symbolic_interval
+                        Symbolic interval conversion functions to and
+                        from Character
+format.symbolic_modal   Symbolic modal conversion functions to and from
+                        Character
+format.symbolic_set     Symbolic set conversion functions to and from
+                        Character
+get_cats                Extract categories
+get_props               Extract prop
+int_prost_test          Linear regression model data example.
+int_prost_train         Linear regression model data example.
+interval.centers        calcula centros
+interval.histogram.plot
+                        Histogram plot for an interval variable
+interval.max            calcula maximos
+interval.min            calcula minimos
+interval.ranges         calcula rangos
+is.sym.histogram        Symbolic histogram
+is.sym.interval         Symbolic interval
+is.sym.modal            Symbolic modal
+is.sym.set              Symbolic set
+lynne1                  Symbolic interval data example.
+mcfa.scatterplot        Plot Interval Scatterplot
+mean.symbolic_interval
+                        Symbolic mean for intervals
+median.symbolic_interval
+                        Symbolic Median
+min.symbolic_interval   Maxima and Minima
+neighbors.vertex        Compute neighbors vertex
+norm.vect               Compute the norm of a vector.
+oils                    Ichino Oils example data.
+plot.symbolic_tbl       Function for plotting a symbolic object
+read.sym.table          Read a Symbolic Table
+sd                      Generic function for the standard desviation
+sym.circle.plot         Symbolic Circle of Correlations
+sym.dist.interval       Distance for Symbolic Interval Variables.
+sym.glm                 Lasso, Ridge and and Elastic Net Linear
+                        regression model to interval variables
+sym.histogram           Create an symbolic_histogram type object
+sym.interval            Create an symbolic_interval type object
+sym.interval.pc         Compute a symbolic interval principal
+                        components curves
+sym.interval.pc.limits
+                        Symbolic interval principal curves limits
+sym.kmeans              Symbolic k-Means
+sym.lm                  CM and CRM Linear regression model.
+sym.mcfa                sym.mcfa
+sym.modal               Create an symbolic_modal type object
+sym.pca                 Interval Principal Components Analysis.
+sym.predict             Predict method to CM and CRM Linear regression
+                        model
+sym.scatterplot         Symbolic Scatter Plot
+sym.set                 Create an symbolic_set type object
+sym.var                 Symbolic Variable (Feature)
+uscrime_int             Us crime interval data table.
+var                     Symbolic Variance
+variance.princ.curve    Variance of the principal curve
+vertex.interval         Vertex of the intervals
+write.sym.table         Write Symbolic Data Table

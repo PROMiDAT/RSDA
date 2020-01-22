@@ -1,0 +1,96 @@
+Cardiological           Cardiological data example
+R2.L                    Lower boundary correlation coefficient.
+R2.U                    Upper boundary correlation coefficient.
+RMSE.L                  Lower boundary root-mean-square error
+RMSE.U                  Upper boundary root-mean-square error
+RSDA                    R to Symbolic Data Analysis
+SDS.to.RSDA             SDS SODAS files to RSDA files.
+SODAS.to.RSDA           XML SODAS files to RSDA files.
+StudentsGrades          Data Example.
+Table7                  Table7
+USCrime                 Us crime classic data table
+VeterinaryData          Symbolic interval data example
+abalone                 SODAS XML data file.
+centers.interval        Compute centers of the interval
+cfa.scatterplot         CFA Symbolic Scatter Plot
+classic.to.sym          Generate a symbolic data table
+cor                     Generic function for the correlation
+cov                     Generic function for the covariance
+deter.coefficient       Compute the determination cosfficient
+display.sym.table       display.sym.table
+dist                    Generic function for distance matrix
+                        computation
+dist.modal              Distance matrix for symbolic data
+dist.vect               Compute a distance vector
+dist.vect.matrix        Compute the distance vector matrix
+ex1_db2so               Data example to generate symbolic objets
+ex_cfa1                 Correspondence Analysis Example
+ex_cfa2                 Correspondence Analysis Example
+example1                Data Example 1
+example2                Data Example 2
+example3                Data Example 3
+example4                Data Example 4
+example5                Data Example 5
+example6                Data Example 6
+example7                Data Example 7
+facedata                Face Data Example
+generate.sym.table      Generate a Symbolic Data Table
+int_prost_test          Linear regression model data example.
+int_prost_train         Linear regression model data example.
+interscal               Interscal Method
+interval.dist           Interval Distance Matrix
+interval.dist.tobj      Symbolic Objects Distance
+interval.histogram.plot
+                        Histogram plot for an interval variable
+lynne1                  Symbolic interval data example.
+lynne2                  Symbolic interval data example.
+mean.sym.data.table     Symbolic Mean
+median.sym.data.table   Symbolic Median
+neighbors.vertex        Compute neighbors vertex
+norm.vect               Compute the norm of a vector.
+oils                    Ichino Oils example data.
+pander.sym.data.table   Pander method for symbolic data table
+plot.sym.data.table     Function for plotting a symbolic object
+predictsym.glm          Predict method to Lasso, Ridge and and Elastic
+                        Net Linear regression model to interval
+                        variables
+predictsym.lm           Predict method to CM and CRM Linear regression
+                        model
+print.sym.data.table    Printing Symbolic Data Table
+read.sym.table          Read a Symbolic Table
+sd                      Generic function for the standard desviation
+sym.cfa                 Symbolic correspondence analysis
+sym.circle.plot         Symbolic Circle of Correlations
+sym.cor                 Symbolic Correlation
+sym.cov                 Symbolic Covariance
+sym.dist.interval       Distance for Symbolic Interval Variables.
+sym.dist.set            Distance for Symbolic Set Variables.
+sym.glm                 Lasso, Ridge and and Elastic Net Linear
+                        regression model to interval variables
+sym.hclust              Symbolic Hierarchical Clustering
+sym.histogram.pca       Histogram Principal Components Analysis
+sym.interval.pc         Compute a symbolic interval principal
+                        components curves
+sym.interval.pc.limits
+                        Symbolic interval principal curves limits
+sym.interval.pca        Interval Principal Components Analysis.
+sym.kmean               Symbolic k-Means
+sym.lm                  CM and CRM Linear regression model.
+sym.lm.bi               Symbolic Linear Regression for two variables.
+sym.mds                 Symbolic Multidemensional Scaling
+sym.mean                Symbolic Mean
+sym.median              Symbolic Median
+sym.obj                 Symbolic Object
+sym.radar.plot          Radar Plot For Symbolic Interval Variables
+sym.scatterplot         Symbolic Scatter Plot
+sym.scatterplot.ggplot
+                        Symbolic Scatter GGPlot
+sym.scatterplot3d       Symbolic Scatter Plot 3D
+sym.sd                  Symbolic Standard Desviation
+sym.var                 Symbolic Variable (Feature)
+sym.variance            Symbolic Variance
+uscrime_int             Us crime interval data table.
+var                     Generic function for the Variance
+variance.princ.curve    Variance of the principal curve
+vertex.interval         Vertex of the intervals
+write.sym.table         Write Symbolic Data Table
