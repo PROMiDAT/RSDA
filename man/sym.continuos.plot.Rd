@@ -4,8 +4,7 @@
 \alias{sym.continuos.plot}
 \title{sym.continuos.plot}
 \usage{
-sym.continuos.plot(info, col = c("blue"), border = FALSE,
-  show.type = TRUE)
+sym.continuos.plot(info, col = c("blue"), border = FALSE, show.type = TRUE)
 }
 \description{
 sym.continuos.plot

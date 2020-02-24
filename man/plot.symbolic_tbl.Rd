@@ -4,9 +4,19 @@
 \alias{plot.symbolic_tbl}
 \title{Function for plotting a symbolic object}
 \usage{
-\method{plot}{symbolic_tbl}(x, col = NA, matrix.form = NA,
-  border = FALSE, size = 1, title = TRUE, show.type = FALSE,
-  font.size = 1, reduce = FALSE, hist.angle.x = 60, ...)
+\method{plot}{symbolic_tbl}(
+  x,
+  col = NA,
+  matrix.form = NA,
+  border = FALSE,
+  size = 1,
+  title = TRUE,
+  show.type = FALSE,
+  font.size = 1,
+  reduce = FALSE,
+  hist.angle.x = 60,
+  ...
+)
 }
 \arguments{
 \item{x}{The symbolic object.}

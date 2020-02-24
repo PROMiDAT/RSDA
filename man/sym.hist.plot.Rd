@@ -4,8 +4,13 @@
 \alias{sym.hist.plot}
 \title{sym.hist.plot}
 \usage{
-sym.hist.plot(info, col = c("blue"), border = FALSE,
-  show.type = TRUE, angle = 60)
+sym.hist.plot(
+  info,
+  col = c("blue"),
+  border = FALSE,
+  show.type = TRUE,
+  angle = 60
+)
 }
 \description{
 sym.hist.plot

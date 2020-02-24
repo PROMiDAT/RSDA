@@ -4,8 +4,13 @@
 \alias{sym.set.plot}
 \title{sym.set.plot}
 \usage{
-sym.set.plot(info, col = c("blue"), border = FALSE, show.type = TRUE,
-  reduce = FALSE)
+sym.set.plot(
+  info,
+  col = c("blue"),
+  border = FALSE,
+  show.type = TRUE,
+  reduce = FALSE
+)
 }
 \description{
 sym.set.plot

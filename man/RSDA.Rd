@@ -3,7 +3,6 @@
 \docType{package}
 \name{RSDA}
 \alias{RSDA}
-\alias{RSDA-package}
 \title{R to Symbolic Data Analysis}
 \description{
 This work is framed inside the Symbolic Data Analysis (SDA). The objective of this

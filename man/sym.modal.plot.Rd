@@ -4,8 +4,13 @@
 \alias{sym.modal.plot}
 \title{sym.modal.plot}
 \usage{
-sym.modal.plot(info, col = c("blue"), border = FALSE,
-  show.type = TRUE, reduce = FALSE)
+sym.modal.plot(
+  info,
+  col = c("blue"),
+  border = FALSE,
+  show.type = TRUE,
+  reduce = FALSE
+)
 }
 \description{
 sym.modal.plot

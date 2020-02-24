@@ -4,8 +4,7 @@
 \alias{sym.interval.plot}
 \title{sym.interval.plot}
 \usage{
-sym.interval.plot(info, col = c("blue"), border = FALSE,
-  show.type = TRUE)
+sym.interval.plot(info, col = c("blue"), border = FALSE, show.type = TRUE)
 }
 \description{
 sym.interval.plot
