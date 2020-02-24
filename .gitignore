@@ -2,7 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-packrat/lib*/
-packrat/src/
-packrat/bundles/
+renv
 inst/doc
