@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-renv
+renv/
 inst/doc
