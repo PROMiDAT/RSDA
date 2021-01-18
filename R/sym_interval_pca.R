@@ -218,7 +218,7 @@ sym.pca.symbolic_tbl <- function(sym.data, method = c(
         for (k in 1:mm) {
           ss <- ss + centers.stan[i, k] * svd$vectors[k, j]
         }
-        svdV[i, j] <- (1 / sqrt(svd$values[j])) * ss
+        svdV[i, j] <- (1 / sqrt(abs(svd$values[j]))) * ss
       }
     }
     IPrinCorre <- matrix(0, mm, 2 * mm)
