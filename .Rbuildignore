@@ -1,6 +1,6 @@
 ^renv$
+^renv
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-packrat/
 data-raw/

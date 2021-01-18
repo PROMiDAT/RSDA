@@ -1,13 +1,12 @@
 Package: RSDA
 Type: Package
 Title: R to Symbolic Data Analysis
-Version: 3.0.1
-Date: 2020-01-17
+Version: 3.0.9
+Date: 2020-12-16
 Authors@R: c(
-    person("Oldemar", "Rodriguez", email = "oldemar.rodriguez@ucr.ac.cr", role = "cre"),
-    person("Carlos", "Aguero", email = "carlos.aguero@promidat.com", role = "aut"),
-    person("Olger", "Calderon", role = "cph"),
-    person("Roberto", "Zuniga", role = "cph"),
+    person("Oldemar", "Rodriguez", email = "oldemar.rodriguez@ucr.ac.cr", role = "aut"),
+    person("Jose Emmanuel", "Chacon", email = "eman.jos@gmail.com", role = "cph"),
+    person("Carlos", "Aguero", email = "carlos.aguero@promidat.com", role = "cre"),
     person("Jorge", "Arce", role = "cph"))
 Description: Symbolic Data Analysis (SDA) was proposed by professor Edwin Diday in 1987, the main purpose of SDA is to substitute the set of rows (cases) in the data table for  a concept (second order statistical unit). This package implements, to the symbolic case, certain techniques of automatic classification, as well as some linear models.
 License: GPL (>=2)
@@ -18,18 +17,18 @@ Suggests:
     testthat (>= 2.1.0),
     knitr,
     rmarkdown
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Imports: 
-    vctrs,
-    dplyr,
+    vctrs (>= 0.2.4),
+    dplyr (>= 0.8.5),
     forcats,
     scales,
     stringr,
-    rlang,
+    rlang (>= 0.4.5),
     purrr,
     magrittr,
     tidyselect,
-    tibble,
+    tibble (>= 3.0.0),
     stats,
     RJSONIO,
     XML,
@@ -41,6 +40,13 @@ Imports:
     princurve,
     nloptr,
     sqldf,
-    randomcoloR
+    randomcoloR,
+    labelled,
+    kknn,
+    e1071,
+    gbm,
+    randomForest,
+    rpart,
+    neuralnet
 VignetteBuilder: knitr
 LazyData: true

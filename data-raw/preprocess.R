@@ -1,3 +1,4 @@
+library(RSDA)
 ## code to prepare `DATASET` dataset goes here
 abalone <- SODAS.to.RSDA("data-raw/abalone.xml")
 usethis::use_data(abalone, overwrite = T)
@@ -7,7 +8,7 @@ class(Cardiological) <- "sym.data.table"
 Cardiological <- RSDA:::to.v3(Cardiological)
 usethis::use_data(Cardiological, overwrite = T)
 
-ex1_db2so <- read.csv("data-raw/ex1_db2so.csv", row.names = 1)
+ex1_db2so <- read.csv("data-raw/ex1_db2so.csv", row.names = 1, stringsAsFactors = T)
 usethis::use_data(ex1_db2so, overwrite = T)
 
 load("data-raw/example1.rda")
@@ -65,7 +66,7 @@ usethis::use_data(ex_mcfa2, overwrite = T)
 USCrime <- read.csv("data-raw/USCrime.csv", row.names = 1)
 usethis::use_data(USCrime, overwrite = T)
 
-ex_mcfa1 <- read.csv("data-raw/ex_mcfa1.csv", row.names = 1)
+ex_mcfa1 <- read.csv("data-raw/ex_mcfa1.csv", row.names = 1, stringsAsFactors = T)
 usethis::use_data(ex_mcfa1, overwrite = T)
 
 load("data-raw/int_prost_train.rda")
@@ -87,3 +88,12 @@ load("data-raw/VeterinaryData.rda")
 class(VeterinaryData) <- "sym.data.table"
 VeterinaryData <- RSDA:::to.v3(VeterinaryData)
 usethis::use_data(VeterinaryData, overwrite = T)
+
+cardiologicalv2 <- RSDA::read.sym.table("data-raw/CardiologicalV2.csv",
+                                        sep = ";", dec = ".")
+usethis::use_data(cardiologicalv2, overwrite = T)
+
+uscrime_intv2 <- RSDA::read.sym.table("data-raw/uscrime_int.csv",
+                                        sep = ";", dec = ".")
+usethis::use_data(uscrime_intv2, overwrite = T)
+
