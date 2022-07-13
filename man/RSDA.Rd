@@ -28,8 +28,8 @@ scaling of interval data, denominated INTERSCAL.
 \tabular{ll}{
 Package: \tab RSDA\cr
 Type: \tab Package\cr
-Version: \tab 3.0.9\cr
-Date: \tab 2020-12-16\cr
+Version: \tab 3.0.10\cr
+Date: \tab 2022-06-27\cr
 License: \tab GPL (>=2)\cr
 }
 Most of the function of the package stars from a symbolic data table that can be store in

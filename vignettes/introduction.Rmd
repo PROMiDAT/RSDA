@@ -475,5 +475,37 @@ mcfa.scatterplot(res[,2], res[,3], sym.data = sym.table, pos.var = c(2,3,4))
 
 ```
 
+# Symbolic UMAP
 
+## Ejemplo Oils
+
+```{r}
+datos <- oils
+datos
+```
+
+```{r}
+x <- sym.umap(datos)
+x
+```
+
+```{r}
+plot(x)
+```
+
+## Ejemplo Cardiological
+
+```{r}
+datos <- Cardiological
+datos
+```
+
+```{r}
+x <- sym.umap(datos)
+x
+```
+
+```{r}
+plot(x)
+```
 
