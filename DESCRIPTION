@@ -1,8 +1,8 @@
 Package: RSDA
 Type: Package
 Title: R to Symbolic Data Analysis
-Version: 3.0.10
-Date: 2022-06-27
+Version: 3.1.0
+Date: 2023-04-21
 Authors@R: c(
     person("Oldemar", "Rodriguez", email = "oldemar.rodriguez@ucr.ac.cr", role = c("aut", "cre")),
     person("Jose Emmanuel", "Chacon", email = "eman.jos@gmail.com", role = "cph"),
@@ -12,12 +12,12 @@ Description: Symbolic Data Analysis (SDA) was proposed by professor Edwin Diday 
 License: GPL (>=2)
 Encoding: UTF-8
 Depends: R (>= 3.4)
-URL: http://www.oldemarrodriguez.com
+URL: https://oldemarrodriguez.com/
 Suggests: 
     testthat (>= 2.1.0),
     knitr,
     rmarkdown
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Imports: 
     vctrs (>= 0.2.4),
     dplyr (>= 0.8.5),

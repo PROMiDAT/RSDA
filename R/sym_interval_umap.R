@@ -1,4 +1,10 @@
-#' @keywords UMAP Intervals
+#' UMAP for Symbolic Data
+#'
+#' @description This function applies the UMAP algorithm to a symbolic data table.
+#'
+#' @param sym.data A symbolic data table.
+#' @param ... Additional arguments to be passed to the UMAP algorithm.
+#' @keywords Intervals
 #' @export
 #'
 #'
@@ -30,6 +36,7 @@ expand_rows <- function(df){
 
 #' UMAP for symbolic data tables
 #' @rdname sym.umap
+#' @param sym.data symbolic data table
 #' @param config object of class umap.config
 #' @param method 	character, implementation. Available methods are 'naive' (an implementation written in pure R) and 'umap-learn' (requires python package 'umap-learn')
 #' @param preserve.seed logical, leave TRUE to insulate external code from randomness within the umap algorithms; set FALSE to allow randomness used in umap algorithms to alter the external random-number generator
@@ -37,7 +44,7 @@ expand_rows <- function(df){
 #' @export
 #' @import umap
 #'
-sym.umap.symbolic_tbl <- function(sym.data,
+sym.umap.symbolic_tbl <- function(sym.data = NULL,
                                  config = umap::umap.defaults,
                                  method = c("naive", "umap-learn"),
                                  preserve.seed = TRUE, ...){
@@ -54,11 +61,12 @@ sym.umap.symbolic_tbl <- function(sym.data,
 
 #' Plot UMAP for symbolic data tables
 #' @param  x sym_umap object
+#' @param ... params for plot
 #' @export
 #' @import ggplot2
 #' @importFrom dplyr group_by summarise
 #'
-plot.sym_umap <- function(x){
+plot.sym_umap <- function(x, ...){
   l <- length(attr(x, "names_umap"))
   x$group <- sort(rep(1:l,(nrow(x)/l)))
 

@@ -4,10 +4,12 @@
 \alias{plot.sym_umap}
 \title{Plot UMAP for symbolic data tables}
 \usage{
-\method{plot}{sym_umap}(x)
+\method{plot}{sym_umap}(x, ...)
 }
 \arguments{
 \item{x}{sym_umap object}
+
+\item{...}{params for plot}
 }
 \description{
 Plot UMAP for symbolic data tables
