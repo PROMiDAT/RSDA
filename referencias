@@ -1,0 +1,6 @@
+Desarrollo general de un paquete en R: https://r-pkgs.org
+
+Para la construcción de nuevos tipo de datos, por ejemplo, los datos de tipo intervalo, https://vctrs.r-lib.org
+
+Como realiza la documentación: https://roxygen2.r-lib.org
+
