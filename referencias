@@ -4,3 +4,4 @@ Para la construcción de nuevos tipo de datos, por ejemplo, los datos de tipo in
 
 Como realiza la documentación: https://roxygen2.r-lib.org
 
+control de dependencias https://rstudio.github.io/renv/

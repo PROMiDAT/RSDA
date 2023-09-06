@@ -1,8 +1,8 @@
 Package: RSDA
 Type: Package
 Title: R to Symbolic Data Analysis
-Version: 3.1.0
-Date: 2023-04-21
+Version: 3.1.1
+Date: 2023-09-06
 Authors@R: c(
     person("Oldemar", "Rodriguez", email = "oldemar.rodriguez@ucr.ac.cr", role = c("aut", "cre")),
     person("Jose Emmanuel", "Chacon", email = "eman.jos@gmail.com", role = "cph"),
